@@ -203,3 +203,18 @@
   color: transparent;
   animation: shimmer 1.5s linear infinite;
 }
+
+/* ── GitHub Contribution Calendar: force full-width stretch ── */
+.github-calendar-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.github-calendar-wrapper > div {
+  width: 100% !important;
+}
+
+.github-calendar-wrapper svg {
+  width: 100% !important;
+  height: auto !important;
+}

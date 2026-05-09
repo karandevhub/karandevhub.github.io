@@ -79,14 +79,17 @@ export default function HeroSection() {
             <span className="text-eyebrow">Available for new work · Q3 2026</span>
           </div>
 
-          <h1 className="text-hero whitespace-nowrap font-display font-semibold text-text-primary">
-            {name.split("").map((c, i) => (
-              <span
-                key={i}
-                className="reveal-line"
-                style={{ marginRight: c === " " ? "0.2em" : 0 }}
-              >
-                <span data-hero-char>{c === " " ? "\u00A0" : c}</span>
+          <h1 className="text-hero md:whitespace-nowrap font-display font-semibold text-text-primary leading-[1.1]">
+            {name.split(" ").map((word, wordIdx) => (
+              <span key={wordIdx} className="inline-block">
+                {word.split("").map((c, i) => (
+                  <span key={i} className="reveal-line">
+                    <span data-hero-char>{c}</span>
+                  </span>
+                ))}
+                {wordIdx < name.split(" ").length - 1 && (
+                  <span className="reveal-line">&nbsp;</span>
+                )}
               </span>
             ))}
           </h1>
@@ -122,17 +125,17 @@ export default function HeroSection() {
             complex problems into elegant solutions.
           </p>
 
-          <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-3">
+          <div data-hero-fade className="mt-10 flex items-center gap-3">
             <a
               href="#work"
-              className="group inline-flex items-center gap-3 rounded-full bg-text-primary px-6 py-3 text-sm font-medium text-bg-primary transition-transform hover:scale-[1.02]"
+              className="group inline-flex whitespace-nowrap items-center gap-3 rounded-full bg-text-primary px-4 py-2 text-sm font-medium text-bg-primary transition-transform hover:scale-[1.02] md:px-6 md:py-3"
             >
               View my work
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
               href="#"
-              className="group inline-flex items-center gap-3 rounded-full border border-border-strong px-6 py-3 text-sm font-medium text-text-primary transition-colors hover:border-accent hover:bg-accent-glow"
+              className="group inline-flex whitespace-nowrap items-center gap-3 rounded-full border border-border-strong px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:border-accent hover:bg-accent-glow md:px-6 md:py-3"
             >
               <Download className="h-4 w-4" />
               Download CV
