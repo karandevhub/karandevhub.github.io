@@ -55,9 +55,9 @@ export default function ContactSection() {
         <div className="mt-12 flex justify-center">
           <button
             onClick={copy}
-            className="group relative inline-flex items-center gap-3 font-display text-2xl font-medium md:text-4xl"
+            className="group relative inline-flex items-center gap-3 font-display text-lg font-medium md:text-4xl"
           >
-            <span className="shimmer-text text-text-primary transition-colors">
+            <span className="shimmer-text break-all text-text-primary transition-colors">
               {contact.email}
             </span>
             <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border-medium text-text-secondary transition-colors group-hover:border-accent group-hover:text-accent">

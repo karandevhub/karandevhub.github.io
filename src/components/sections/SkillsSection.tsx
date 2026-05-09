@@ -8,10 +8,10 @@ import GlassCard from "@/components/ui/GlassCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 function RadarChart() {
-  const size = 280;
+  const size = 220;
   const cx = size / 2;
   const cy = size / 2;
-  const r = size / 2 - 24;
+  const r = size / 2 - 40;
   const n = radarAxes.length;
   const angle = (i: number) => (-Math.PI / 2) + (i * 2 * Math.PI) / n;
   const point = (i: number, v: number) => {
@@ -145,12 +145,17 @@ export default function SkillsSection() {
           </p>
         </div>
 
-        <div className="grid auto-rows-[minmax(180px,auto)] grid-cols-1 gap-4 md:grid-cols-6">
+        <div className="grid auto-rows-[minmax(180px,auto)] grid-cols-1 gap-4 md:grid-cols-12">
           {skills.map((cat, idx) => {
             const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[
               cat.icon
             ] || Icons.Sparkles;
-            const span = idx === 3 ? "md:col-span-4" : "md:col-span-2";
+            const span =
+              idx < 3
+                ? "md:col-span-4"
+                : idx === 3
+                ? "md:col-span-6"
+                : "md:col-span-3";
             return (
               <ScrollReveal key={cat.category} delay={idx * 0.05} className={span}>
                 <SpotlightCard className="h-full glass border border-border-medium p-6">
@@ -198,18 +203,20 @@ export default function SkillsSection() {
               </ScrollReveal>
             );
           })}
-          <ScrollReveal className="md:col-span-2 md:row-span-2">
-            <SpotlightCard className="h-full glass border border-border-medium p-6">
-              <div className="mb-2 flex items-center justify-between">
-                <h3 className="font-display text-lg font-semibold text-text-primary">
+          <ScrollReveal className="md:col-span-3 md:row-span-1">
+            <SpotlightCard className="h-full glass border border-border-medium p-3">
+              <div className="flex items-center justify-between">
+                <h3 className="font-display text-sm font-semibold text-text-primary">
                   Profile
                 </h3>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-text-muted">
+                <span className="font-mono text-[9px] uppercase tracking-widest text-text-muted">
                   radar
                 </span>
               </div>
-              <div className="-mt-2 aspect-square w-full">
-                <RadarChart />
+              <div className="-mt-8 flex justify-center">
+                <div className="w-full max-w-[200px]">
+                  <RadarChart />
+                </div>
               </div>
             </SpotlightCard>
           </ScrollReveal>

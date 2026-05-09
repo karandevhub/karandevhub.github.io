@@ -4,7 +4,6 @@ import { gsap } from "gsap";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download, ArrowUpRight } from "lucide-react";
 import HeroCanvas from "@/components/three/HeroCanvas";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const ROLES = [
   "Full Stack Developer",
@@ -16,7 +15,6 @@ export default function HeroSection() {
   const root = useRef<HTMLElement>(null);
   const [roleIdx, setRoleIdx] = useState(0);
   const [scrolled, setScrolled] = useState(false);
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -56,11 +54,9 @@ export default function HeroSection() {
       id="top"
       className="relative isolate flex min-h-[100dvh] w-full items-center overflow-hidden pt-20"
     >
-      {isDesktop && (
-        <div className="absolute inset-0 z-0">
-          <HeroCanvas />
-        </div>
-      )}
+      <div className="absolute inset-0 z-0">
+        <HeroCanvas />
+      </div>
       <div
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{

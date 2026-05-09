@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Compass, Sparkles, Wrench } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import profileImage from "@/assets/profile-image.jpg";
 
 const VALUES = [
   {
@@ -40,8 +41,7 @@ export default function AboutSection() {
             <div
               className="absolute inset-0 -rotate-2 rounded-2xl border border-border-strong bg-bg-secondary transition-transform duration-500 hover:rotate-0 hover:scale-[1.02]"
               style={{
-                backgroundImage:
-                  "url(https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=900&q=80)",
+                backgroundImage: `url(${profileImage})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 boxShadow:
@@ -91,19 +91,21 @@ export default function AboutSection() {
 
           <div className="my-10 h-px w-full bg-border-subtle" />
 
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-3">
             {VALUES.map((v) => (
               <ScrollReveal key={v.label}>
-                <div className="group">
-                  <div
-                    className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg border border-border-medium bg-bg-secondary transition-colors group-hover:border-accent"
-                  >
+                <div className="group flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border-medium bg-bg-secondary transition-colors group-hover:border-accent">
                     <v.icon className="h-4 w-4 text-text-primary" />
                   </div>
-                  <div className="font-display text-base font-semibold text-text-primary">
-                    {v.label}
+                  <div>
+                    <div className="font-display text-base font-semibold text-text-primary">
+                      {v.label}
+                    </div>
+                    <p className="mt-1 text-sm text-text-secondary leading-relaxed">
+                      {v.desc}
+                    </p>
                   </div>
-                  <p className="mt-1 text-sm text-text-secondary">{v.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
