@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate, useSpring } from "framer-motion";
+import { useRef } from "react";
 import * as Icons from "lucide-react";
 import { skills, radarAxes } from "@/data/skills";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -86,6 +87,45 @@ function RadarChart() {
   );
 }
 
+function SpotlightCard({ children, className }: { children: React.ReactNode; className?: string }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(-999);
+  const mouseY = useMotionValue(-999);
+
+  const springX = useSpring(mouseX, { stiffness: 400, damping: 40 });
+  const springY = useSpring(mouseY, { stiffness: 400, damping: 40 });
+
+  const background = useMotionTemplate`radial-gradient(300px circle at ${springX}px ${springY}px, rgba(14,165,233,0.10), transparent 70%)`;
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(-999);
+    mouseY.set(-999);
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`group relative overflow-hidden rounded-2xl ${className ?? ""}`}
+    >
+      {/* Spotlight layer */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-0 rounded-2xl"
+        style={{ background }}
+      />
+      <div className="relative z-10 h-full">{children}</div>
+    </motion.div>
+  );
+}
+
 export default function SkillsSection() {
   return (
     <section
@@ -113,7 +153,7 @@ export default function SkillsSection() {
             const span = idx === 0 ? "md:col-span-4" : idx === 1 ? "md:col-span-2" : idx === 2 ? "md:col-span-2" : idx === 3 ? "md:col-span-2 md:row-span-1" : "md:col-span-2";
             return (
               <ScrollReveal key={cat.category} delay={idx * 0.05} className={span}>
-                <GlassCard className="h-full">
+                <SpotlightCard className="h-full glass border border-border-medium p-6">
                   <div className="mb-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div
@@ -147,19 +187,19 @@ export default function SkillsSection() {
                         className="group cursor-default rounded-full border border-border-medium bg-bg-tertiary px-3 py-1.5 text-xs text-text-secondary transition-all hover:-translate-y-0.5 hover:border-accent hover:text-text-primary hover:shadow-[0_0_20px_-4px_var(--accent-glow)]"
                       >
                         {s.name}
-                        <span className="ml-2 font-mono text-[10px] text-text-muted">
-                          {"●".repeat(s.level)}
-                          {"○".repeat(5 - s.level)}
+                        <span className="ml-2 font-mono text-[10px] inline-flex">
+                          <span style={{ color: "var(--accent)" }}>{"●".repeat(s.level)}</span>
+                          <span className="text-text-muted">{"○".repeat(5 - s.level)}</span>
                         </span>
                       </motion.li>
                     ))}
                   </motion.ul>
-                </GlassCard>
+                </SpotlightCard>
               </ScrollReveal>
             );
           })}
           <ScrollReveal className="md:col-span-2 md:row-span-2">
-            <GlassCard className="h-full">
+            <SpotlightCard className="h-full glass border border-border-medium p-6">
               <div className="mb-2 flex items-center justify-between">
                 <h3 className="font-display text-lg font-semibold text-text-primary">
                   Profile
@@ -171,7 +211,7 @@ export default function SkillsSection() {
               <div className="-mt-2 aspect-square w-full">
                 <RadarChart />
               </div>
-            </GlassCard>
+            </SpotlightCard>
           </ScrollReveal>
         </div>
       </div>

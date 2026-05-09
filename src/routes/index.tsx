@@ -5,7 +5,6 @@ import SkillsSection from "@/components/sections/SkillsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import OpenSourceSection from "@/components/sections/OpenSourceSection";
-import AchievementsSection from "@/components/sections/AchievementsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import BlogSection from "@/components/sections/BlogSection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -13,16 +12,16 @@ import ContactSection from "@/components/sections/ContactSection";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Alex Rivera — Frontend Architect & Systems Designer" },
+      { title: "Karan Kumar — Full Stack & AI Engineer" },
       {
         name: "description",
         content:
-          "Frontend architect & systems-minded designer. Building interfaces that feel inevitable. Currently leading frontend at Linear.",
+          "Full Stack & AI Engineer specializing in intelligent systems and immersive interfaces.",
       },
-      { property: "og:title", content: "Alex Rivera — Frontend Architect" },
+      { property: "og:title", content: "Karan Kumar — Full Stack & AI Engineer" },
       {
         property: "og:description",
-        content: "Building interfaces that feel inevitable.",
+        content: "Building intelligent systems that bridge the gap between AI and reality.",
       },
     ],
   }),
@@ -38,7 +37,6 @@ function Home() {
       <ExperienceSection />
       <ProjectsSection />
       <OpenSourceSection />
-      <AchievementsSection />
       <TestimonialsSection />
       <BlogSection />
       <ContactSection />

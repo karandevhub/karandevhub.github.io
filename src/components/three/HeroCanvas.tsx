@@ -21,6 +21,8 @@ export default function HeroCanvas() {
           dpr={[1, 1.5]}
           camera={{ position: [0, 0, 6], fov: 60 }}
           gl={{ antialias: true, alpha: true }}
+          style={{ pointerEvents: "none" }}
+          events={() => ({} as any)}
         >
           <ParticleField />
         </Canvas>

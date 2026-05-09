@@ -97,6 +97,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     overflow-x: hidden;
   }
@@ -172,20 +175,6 @@
   }
 }
 
-/* Lenis smooth scroll */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
