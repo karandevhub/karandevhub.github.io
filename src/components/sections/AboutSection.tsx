@@ -23,9 +23,9 @@ const VALUES = [
 ];
 
 const PARAGRAPHS = [
-  "I started writing CSS in a Notepad window in 2010 and somehow never stopped.",
-  "Today I lead frontend at Linear, where I obsess over realtime collaboration, type-perfect APIs, and interfaces that vanish into the work.",
-  "Before that I helped build the Vercel dashboard, contributed to Next.js, and rebuilt the Stripe payments dashboard from Backbone to React without dropping a frame.",
+  "I'm a Full Stack & AI Engineer who lives at the intersection of complex logic and intuitive design.",
+  "I specialize in building intelligent applications that don't just function—they anticipate. My work ranges from deep neural network integrations to high-performance web ecosystems.",
+  "I believe the best technology is invisible, seamlessly empowering users to achieve more. When I'm not coding, I'm likely exploring the next frontier of AI or contributing to the open-source community.",
 ];
 
 export default function AboutSection() {
@@ -53,7 +53,7 @@ export default function AboutSection() {
               style={{ boxShadow: "0 20px 40px -20px rgba(0,0,0,0.8)" }}
             >
               <div className="text-text-muted">// currently</div>
-              <div className="text-text-primary">building realtime cursors</div>
+              <div className="text-text-primary">building AI agents</div>
             </div>
           </div>
         </ScrollReveal>

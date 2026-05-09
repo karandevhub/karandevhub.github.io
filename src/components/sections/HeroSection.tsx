@@ -7,9 +7,9 @@ import HeroCanvas from "@/components/three/HeroCanvas";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const ROLES = [
-  "Frontend Architect",
-  "Systems Designer",
-  "Performance Obsessive",
+  "Full Stack Developer",
+  "AI & ML Engineer",
+  "Software Architect",
 ];
 
 export default function HeroSection() {
@@ -48,7 +48,7 @@ export default function HeroSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const name = "Alex Rivera.";
+  const name = "Karan Kumar.";
 
   return (
     <section
@@ -79,7 +79,7 @@ export default function HeroSection() {
             <span className="text-eyebrow">Available for new work · Q3 2026</span>
           </div>
 
-          <h1 className="text-hero font-display font-semibold text-text-primary">
+          <h1 className="text-hero whitespace-nowrap font-display font-semibold text-text-primary">
             {name.split("").map((c, i) => (
               <span
                 key={i}
@@ -117,9 +117,9 @@ export default function HeroSection() {
             data-hero-fade
             className="mt-8 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg"
           >
-            I build interfaces that feel inevitable — fast, considered, and
-            slightly haunting. Currently leading frontend at Linear, and shipping
-            things in the open.
+            I build intelligent systems and immersive interfaces that bridge the
+            gap between AI and reality. Full Stack & AI Engineer, turning
+            complex problems into elegant solutions.
           </p>
 
           <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-3">
@@ -141,18 +141,18 @@ export default function HeroSection() {
 
           <div data-hero-fade className="mt-12 flex items-center gap-6 font-mono text-xs text-text-muted">
             <div>
-              <div className="text-text-primary">9+ yrs</div>
-              <div>shipping the web</div>
+              <div className="text-text-primary">3+ yrs</div>
+              <div>building the future</div>
             </div>
             <div className="h-8 w-px bg-border-medium" />
             <div>
-              <div className="text-text-primary">Linear · ex-Vercel</div>
-              <div>ex-Stripe</div>
+              <div className="text-text-primary">Full Stack & AI</div>
+              <div>Open Source</div>
             </div>
             <div className="hidden h-8 w-px bg-border-medium sm:block" />
             <div className="hidden sm:block">
-              <div className="text-text-primary">Lisbon ⇄ Remote</div>
-              <div>UTC+0</div>
+              <div className="text-text-primary">Remote ⇄ Local</div>
+              <div>IST</div>
             </div>
           </div>
         </div>

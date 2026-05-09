@@ -27,10 +27,10 @@ export default function Navbar() {
             className="flex h-8 w-8 items-center justify-center rounded-md font-display text-sm font-bold text-bg-primary"
             style={{ background: "var(--accent)" }}
           >
-            AR
+            KK
           </span>
           <span className="hidden font-display text-sm font-medium tracking-tight text-text-primary sm:inline">
-            Alex Rivera
+            Karan Kumar
           </span>
         </a>
 

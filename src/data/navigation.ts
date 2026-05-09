@@ -7,12 +7,11 @@ export const navLinks = [
 ];
 
 export const contact = {
-  email: "alex@riveralabs.dev",
+  email: "karanmahatocse@gmail.com",
   available: true,
   socials: [
-    { label: "GitHub", href: "https://github.com", icon: "Github" },
-    { label: "LinkedIn", href: "https://linkedin.com", icon: "Linkedin" },
-    { label: "X", href: "https://x.com", icon: "Twitter" },
-    { label: "Dribbble", href: "https://dribbble.com", icon: "Dribbble" },
+    { label: "GitHub", href: "https://github.com/karandevhub", icon: "Github" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/itskaran/", icon: "Linkedin" },
+    { label: "X", href: "https://x.com/KaranKumar37664", icon: "Twitter" },
   ],
 };
