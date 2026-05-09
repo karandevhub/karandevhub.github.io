@@ -150,7 +150,7 @@ export default function SkillsSection() {
             const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[
               cat.icon
             ] || Icons.Sparkles;
-            const span = idx === 0 ? "md:col-span-4" : idx === 1 ? "md:col-span-2" : idx === 2 ? "md:col-span-2" : idx === 3 ? "md:col-span-2 md:row-span-1" : "md:col-span-2";
+            const span = idx === 3 ? "md:col-span-4" : "md:col-span-2";
             return (
               <ScrollReveal key={cat.category} delay={idx * 0.05} className={span}>
                 <SpotlightCard className="h-full glass border border-border-medium p-6">

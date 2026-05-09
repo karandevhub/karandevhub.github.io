@@ -2,64 +2,63 @@ import type { Skill } from "@/types";
 
 export const skills: Skill[] = [
   {
-    category: "Frontend Mastery",
+    category: "Programming Languages",
+    icon: "Code2",
+    items: [
+      { name: "TypeScript", level: 5 },
+      { name: "JavaScript", level: 5 },
+      { name: "C++", level: 4 },
+    ],
+  },
+  {
+    category: "Frontend Development",
+    icon: "Layout",
+    items: [
+      { name: "React.js", level: 5 },
+      { name: "Next.js", level: 5 },
+      { name: "React Native", level: 5 },
+      { name: "Redux", level: 4 },
+      { name: "TanStack Query", level: 5 },
+    ],
+  },
+  {
+    category: "AI & ML Tools",
     icon: "Sparkles",
     items: [
-      { name: "React", level: 5 },
-      { name: "TypeScript", level: 5 },
-      { name: "TanStack", level: 5 },
-      { name: "Next.js", level: 5 },
-      { name: "Framer Motion", level: 4 },
-      { name: "GSAP", level: 4 },
-      { name: "Three.js", level: 3 },
+      { name: "LangChain", level: 4 },
+      { name: "GenKit", level: 4 },
+      { name: "RAG", level: 4 },
     ],
   },
   {
-    category: "Backend & APIs",
-    icon: "Server",
+    category: "Backend & Database",
+    icon: "Database",
     items: [
       { name: "Node.js", level: 5 },
-      { name: "Rust", level: 3 },
-      { name: "PostgreSQL", level: 4 },
-      { name: "GraphQL", level: 4 },
-      { name: "Redis", level: 4 },
+      { name: "Express.js", level: 5 },
+      { name: "Fastify", level: 4 },
+      { name: "Socket.io", level: 4 },
+      { name: "MongoDB", level: 5 },
+      { name: "MySQL", level: 4 },
+      { name: "Prisma ORM", level: 5 },
     ],
   },
   {
-    category: "DevOps & Cloud",
+    category: "Cloud & DevOps",
     icon: "Cloud",
     items: [
-      { name: "Cloudflare", level: 5 },
-      { name: "Kubernetes", level: 3 },
-      { name: "Terraform", level: 4 },
-      { name: "Docker", level: 4 },
-    ],
-  },
-  {
-    category: "Tooling & Workflow",
-    icon: "Wrench",
-    items: [
-      { name: "Vite", level: 5 },
-      { name: "Vitest", level: 4 },
-      { name: "Playwright", level: 4 },
-      { name: "Figma", level: 5 },
-    ],
-  },
-  {
-    category: "Currently Learning",
-    icon: "Compass",
-    items: [
-      { name: "WebGPU", level: 2 },
-      { name: "Zig", level: 2 },
-      { name: "DuckDB", level: 3 },
+      { name: "AWS", level: 4 },
+      { name: "Docker", level: 5 },
+      { name: "Google Cloud", level: 4 },
+      { name: "Git/GitHub", level: 5 },
     ],
   },
 ];
 
 export const radarAxes = [
   { label: "Frontend", value: 0.95 },
-  { label: "Backend", value: 0.78 },
-  { label: "DevOps", value: 0.7 },
-  { label: "Design", value: 0.88 },
-  { label: "Performance", value: 0.92 },
+  { label: "Backend", value: 0.92 },
+  { label: "AI/ML", value: 0.85 },
+  { label: "Cloud", value: 0.88 },
+  { label: "Database", value: 0.90 },
 ];
