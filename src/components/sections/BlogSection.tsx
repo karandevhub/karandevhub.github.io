@@ -39,9 +39,11 @@ const POSTS = [
   },
 ];
 
-export default function BlogSection() {
+export default function BlogSection({ isPage = false }: { isPage?: boolean }) {
   return (
-    <section className="relative w-full bg-bg-primary px-6 py-24 lg:px-10 lg:py-40">
+    <section className={`relative w-full bg-bg-primary px-6 lg:px-10 ${
+      isPage ? "pt-20 pb-24 lg:pt-28 lg:pb-40" : "py-24 lg:py-40"
+    }`}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>

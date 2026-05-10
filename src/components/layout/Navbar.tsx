@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { navLinks } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
@@ -35,21 +36,31 @@ export default function Navbar() {
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between">
-        <a href="#top" className="group flex items-center gap-2">
+        <Link to="/" className="group flex items-center gap-2">
           <span className="font-logo text-4xl sm:text-3xl md:text-4xl text-text-primary">
             Karan Kumar
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((l) => (
             <li key={l.id}>
-              <a
-                href={l.href}
-                className="rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary transition-colors hover:text-text-primary"
-              >
-                {l.label}
-              </a>
+              {l.href.startsWith("/") ? (
+                <Link
+                  to={l.href as any}
+                  className="rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary transition-colors hover:text-text-primary"
+                  activeProps={{ className: "text-accent" }}
+                >
+                  {l.label}
+                </Link>
+              ) : (
+                <a
+                  href={l.href}
+                  className="rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary transition-colors hover:text-text-primary"
+                >
+                  {l.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -77,25 +88,55 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute left-0 top-full w-full border-b border-border-subtle bg-bg-primary/95 px-6 py-6 shadow-lg backdrop-blur-xl md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] h-screen w-full bg-bg-primary/95 backdrop-blur-2xl md:hidden"
           >
-            <ul className="flex flex-col gap-6">
-              {navLinks.map((l) => (
-                <li key={l.id}>
-                  <a
-                    href={l.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block font-display text-2xl font-medium text-text-secondary transition-colors hover:text-accent"
+            <div className="flex h-16 items-center justify-between px-6">
+              <span className="font-logo text-3xl text-text-primary">
+                Karan Kumar
+              </span>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border-medium bg-bg-secondary/60 text-text-primary"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <nav className="flex h-[calc(100vh-64px)] flex-col justify-center px-8">
+              <ul className="flex flex-col gap-8">
+                {navLinks.map((l, i) => (
+                  <motion.li
+                    key={l.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
                   >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+                    {l.href.startsWith("/") ? (
+                      <Link
+                        to={l.href as any}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block font-display text-5xl font-semibold text-text-primary transition-colors hover:text-accent active:text-accent"
+                        activeProps={{ className: "text-accent" }}
+                      >
+                        {l.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={l.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block font-display text-5xl font-semibold text-text-primary transition-colors hover:text-accent active:text-accent"
+                      >
+                        {l.label}
+                      </a>
+                    )}
+                  </motion.li>
+                ))}
+              </ul>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

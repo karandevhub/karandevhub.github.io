@@ -3,6 +3,7 @@ export const navLinks = [
   { id: "skills", label: "Skills", href: "#skills" },
   { id: "experience", label: "Experience", href: "#experience" },
   { id: "work", label: "Work", href: "#work" },
+  { id: "blogs", label: "Blogs", href: "/blogs" },
   { id: "contact", label: "Contact", href: "#contact" },
 ];
 
