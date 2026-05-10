@@ -2,8 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /404
 
-# Crawl-delay to avoid overloading the server
-Crawl-delay: 10
 
 # Primary sitemap
 Sitemap: https://karandevhub.github.io/sitemap.xml
