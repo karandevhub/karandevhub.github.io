@@ -2,11 +2,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Twitter, Dribbble, Copy, Check } from "lucide-react";
-import { contact } from "@/data/navigation";
+import { CONTACT, IDENTITY } from "@/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
 import MagneticButton from "@/components/ui/MagneticButton";
 
-const ICONS = { Github, Linkedin, Twitter, Dribbble };
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -14,7 +13,7 @@ export default function ContactSection() {
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(contact.email);
+      await navigator.clipboard.writeText(CONTACT.email);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {}
@@ -58,7 +57,7 @@ export default function ContactSection() {
             className="group relative inline-flex items-center gap-3 font-display text-lg font-medium md:text-4xl"
           >
             <span className="shimmer-text break-all text-text-primary transition-colors">
-              {contact.email}
+              {CONTACT.email}
             </span>
             <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border-medium text-text-secondary transition-colors group-hover:border-accent group-hover:text-accent">
               {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
@@ -80,8 +79,8 @@ export default function ContactSection() {
         </AnimatePresence>
 
         <div className="mt-10 flex justify-center gap-3">
-          {contact.socials.map((s) => {
-            const Icon = ICONS[s.icon as keyof typeof ICONS] || Github;
+          {CONTACT.socials.map((s) => {
+            const Icon = s.icon;
             return (
               <MagneticButton
                 key={s.label}
@@ -95,16 +94,6 @@ export default function ContactSection() {
           })}
         </div>
 
-        <div className="mt-10 inline-flex items-center gap-2 rounded-full border border-border-medium bg-bg-secondary/60 px-4 py-2 font-mono text-xs">
-          <span
-            className={`h-2 w-2 rounded-full pulse-dot ${contact.available ? "bg-emerald-400" : "bg-red-400"}`}
-          />
-          <span className="text-text-secondary">
-            {contact.available
-              ? "Available for freelance & full-time roles"
-              : "Currently unavailable"}
-          </span>
-        </div>
 
         <form
           onSubmit={submit}

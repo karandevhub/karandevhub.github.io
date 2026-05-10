@@ -3,31 +3,7 @@ import { motion } from "framer-motion";
 import { Compass, Sparkles, Wrench } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import profileImage from "@/assets/profile-image.jpg";
-
-const VALUES = [
-  {
-    icon: Sparkles,
-    label: "Craft is the strategy",
-    desc: "Details aren't decoration — they're the product. I sweat the 100ms.",
-  },
-  {
-    icon: Wrench,
-    label: "Build for the team behind you",
-    desc: "Code that reads well outlives code that runs fast. I optimize for the next person.",
-  },
-  {
-    icon: Compass,
-    label: "Ship with conviction",
-    desc: "Strong opinions, weakly held. Ship, learn, refactor — repeat.",
-  },
-];
-
-const PARAGRAPHS = [
-  "I'm a Full Stack & AI Engineer who lives at the intersection of complex logic and intuitive design.",
-  "I specialize in building intelligent applications that don't just function—they anticipate. My work ranges from deep neural network integrations to high-performance web ecosystems.",
-  "I believe the best technology is invisible, seamlessly empowering users to achieve more. When I'm not coding, I'm likely exploring the next frontier of AI or contributing to the open-source community.",
-];
+import { ABOUT } from "@/constants";
 
 export default function AboutSection() {
   return (
@@ -41,7 +17,7 @@ export default function AboutSection() {
             <div
               className="absolute inset-0 -rotate-2 rounded-2xl border border-border-strong bg-bg-secondary transition-transform duration-500 hover:rotate-0 hover:scale-[1.02]"
               style={{
-                backgroundImage: `url(${profileImage})`,
+                backgroundImage: `url(/profile-image.jpg)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 boxShadow:
@@ -72,7 +48,7 @@ export default function AboutSection() {
             viewport={{ once: true, margin: "-80px" }}
             variants={{ show: { transition: { staggerChildren: 0.15 } } }}
           >
-            {PARAGRAPHS.map((p, i) => (
+            {ABOUT.paragraphs.map((p, i) => (
               <motion.p
                 key={i}
                 variants={{
@@ -92,7 +68,7 @@ export default function AboutSection() {
           <div className="my-10 h-px w-full bg-border-subtle" />
 
           <div className="grid gap-8 sm:grid-cols-3">
-            {VALUES.map((v) => (
+            {ABOUT.values.map((v) => (
               <ScrollReveal key={v.label}>
                 <div className="group flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border-medium bg-bg-secondary transition-colors group-hover:border-accent">

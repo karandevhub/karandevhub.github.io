@@ -4,12 +4,7 @@ import { gsap } from "gsap";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download, ArrowUpRight } from "lucide-react";
 import HeroCanvas from "@/components/three/HeroCanvas";
-
-const ROLES = [
-  "Full Stack Developer",
-  "AI & ML Engineer",
-  "Software Architect",
-];
+import { IDENTITY } from "@/constants";
 
 export default function HeroSection() {
   const root = useRef<HTMLElement>(null);
@@ -36,7 +31,7 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
-    const i = setInterval(() => setRoleIdx((r) => (r + 1) % ROLES.length), 2400);
+    const i = setInterval(() => setRoleIdx((r) => (r + 1) % IDENTITY.roles.length), 2400);
     return () => clearInterval(i);
   }, []);
 
@@ -46,7 +41,6 @@ export default function HeroSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const name = "Karan Kumar.";
 
   return (
     <section
@@ -72,18 +66,18 @@ export default function HeroSection() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
             </span>
-            <span className="text-eyebrow">Available for new work · Q3 2026</span>
+            <span className="text-eyebrow">{IDENTITY.availabilityText}</span>
           </div>
 
           <h1 className="text-hero md:whitespace-nowrap font-display font-semibold text-text-primary leading-[1.1]">
-            {name.split(" ").map((word, wordIdx) => (
+            {IDENTITY.name.split(" ").map((word, wordIdx) => (
               <span key={wordIdx} className="inline-block">
                 {word.split("").map((c, i) => (
                   <span key={i} className="reveal-line">
                     <span data-hero-char>{c}</span>
                   </span>
                 ))}
-                {wordIdx < name.split(" ").length - 1 && (
+                {wordIdx < IDENTITY.name.split(" ").length - 1 && (
                   <span className="reveal-line">&nbsp;</span>
                 )}
               </span>
@@ -106,7 +100,7 @@ export default function HeroSection() {
                   className="absolute left-0 whitespace-nowrap"
                   style={{ color: "var(--accent)" }}
                 >
-                  {ROLES[roleIdx]}
+                  {IDENTITY.roles[roleIdx]}
                 </motion.span>
               </AnimatePresence>
             </span>
@@ -116,9 +110,7 @@ export default function HeroSection() {
             data-hero-fade
             className="mt-8 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg"
           >
-            I build intelligent systems and immersive interfaces that bridge the
-            gap between AI and reality. Full Stack & AI Engineer, turning
-            complex problems into elegant solutions.
+            {IDENTITY.bio}
           </p>
 
           <div data-hero-fade className="mt-10 flex items-center gap-3">
