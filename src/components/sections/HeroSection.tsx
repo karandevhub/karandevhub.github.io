@@ -70,13 +70,13 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto w-full max-w-7xl py-8 sm:py-12 md:py-16">
 
         {/* ── "Hey 👋 I am Karan." headline ── */}
-        <div data-hero-fade className="mb-2 sm:mb-3">
+        <div data-hero-fade className="mb-4 sm:mb-4">
           <span className="font-display text-base sm:text-lg font-medium text-text-secondary">
             Hey 👋 I am
           </span>
         </div>
 
-        <h1 className="text-hero md:whitespace-nowrap font-display font-semibold text-text-primary leading-[1.05] mb-3 sm:mb-5">
+        <h1 className="text-hero md:whitespace-nowrap font-display font-semibold text-text-primary leading-[1.05] mb-5 sm:mb-6">
           {IDENTITY.name.split(" ").map((word, wordIdx) => (
             <span key={wordIdx} className="inline-block">
               {word.split("").map((c, i) => (
@@ -94,9 +94,9 @@ export default function HeroSection() {
         {/* Animated role */}
         <div
           data-hero-fade
-          className="mb-5 sm:mb-7 flex items-baseline gap-3 text-h2 font-display text-text-secondary"
+          className="mb-7 sm:mb-8 flex items-center gap-3 text-h2 font-display text-text-secondary"
         >
-          <span className="font-mono text-sm text-text-muted">→</span>
+          <span className="font-mono text-sm text-text-primary">→</span>
           <span className="relative inline-block min-h-[1.2em] min-w-[260px] sm:min-w-[300px]">
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -115,7 +115,7 @@ export default function HeroSection() {
         </div>
 
         {/* ── Meta: location + current work ── */}
-        <div data-hero-fade className="mb-5 sm:mb-6 flex flex-col gap-2">
+        <div data-hero-fade className="mb-7 sm:mb-7 flex flex-col gap-2">
           <div className="flex items-center gap-2 text-sm text-text-secondary">
             <MapPin className="h-4 w-4 text-accent flex-shrink-0" />
             <span>{IDENTITY.location}</span>
@@ -127,7 +127,7 @@ export default function HeroSection() {
         </div>
 
         {/* ── Social links row ── */}
-        <div data-hero-fade className="mb-5 sm:mb-6 flex flex-wrap items-center gap-2 md:gap-3">
+        <div data-hero-fade className="mb-7 sm:mb-7 flex flex-wrap items-center gap-2 md:gap-3">
           {CONTACT.socials.map((s) => (
             <a
               key={s.label}
@@ -159,7 +159,7 @@ export default function HeroSection() {
         </div>
 
         {/* ── Spotify widget ── */}
-        <div data-hero-fade className="mb-4 sm:mb-8">
+        <div data-hero-fade className="mb-6 sm:mb-10">
           <SpotifyWidget />
         </div>
 

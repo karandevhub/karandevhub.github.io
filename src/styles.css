@@ -3,6 +3,14 @@
 @import "tailwindcss" source(none);
 @import "tw-animate-css";
 
+@font-face {
+  font-family: 'LogoFont';
+  src: url('/fonts/logo-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @source "../src";
 
 @custom-variant dark (&:is(.dark *));
@@ -11,6 +19,7 @@
   --font-display: "Clash Display", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-logo: "LogoFont", ui-sans-serif, system-ui, sans-serif;
 
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);

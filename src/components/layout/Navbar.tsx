@@ -36,13 +36,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between">
         <a href="#top" className="group flex items-center gap-2">
-          <span
-            className="flex h-8 w-8 items-center justify-center rounded-md font-display text-sm font-bold text-bg-primary"
-            style={{ background: "var(--accent)" }}
-          >
-            KK
-          </span>
-          <span className="hidden font-display text-sm font-medium tracking-tight text-text-primary sm:inline">
+          <span className="font-logo text-4xl sm:text-3xl md:text-4xl text-text-primary">
             Karan Kumar
           </span>
         </a>
