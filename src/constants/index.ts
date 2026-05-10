@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Sparkles, Wrench, Compass } from "lucide-react";
+import { Github, Linkedin, Twitter, Sparkles, Wrench, Compass, Instagram, Mail } from "lucide-react";
 
 export const IDENTITY = {
   name: "Karan Kumar",
@@ -10,16 +10,20 @@ export const IDENTITY = {
   ],
   bio: "I build intelligent systems and immersive interfaces that bridge the gap between AI and reality. Turning complex problems into elegant solutions.",
   available: true,
-  availabilityText: "Available for new work · Q3 2026",
-  location: "Noida, Uttar Pradesh - 201309, India",
+  location: "Noida, India 🇮🇳",
+  currentWork: "Full Stack & AI Engineer @ Building cool stuff",
 };
 
 export const CONTACT = {
   email: "karanmahatocse@gmail.com",
+  resumeUrl: "#",
   socials: [
-    { label: "GitHub", href: "https://github.com/karandevhub", icon: Github },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/itskaran/", icon: Linkedin },
+    { label: "GitHub", href: "https://github.com/karandevhub", icon: Github },
+    { label: "Medium", href: "https://medium.com/@karanmahatocse", icon: null, mediumIcon: true },
+    { label: "Instagram", href: "https://www.instagram.com/justsaykaran", icon: Instagram },
     { label: "X", href: "https://x.com/KaranKumar37664", icon: Twitter },
+    { label: "Email", href: "mailto:karanmahatocse@gmail.com", icon: Mail },
   ],
 };
 

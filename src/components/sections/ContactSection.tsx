@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, Twitter, Dribbble, Copy, Check } from "lucide-react";
+import { Copy, Check } from "lucide-react";
+import MediumIcon from "@/components/ui/MediumIcon";
 import { CONTACT, IDENTITY } from "@/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
 import MagneticButton from "@/components/ui/MagneticButton";
@@ -86,9 +87,15 @@ export default function ContactSection() {
                 key={s.label}
                 as="a"
                 href={s.href}
+                target={s.href.startsWith("mailto") ? undefined : "_blank"}
+                rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-border-medium bg-bg-secondary text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
               >
-                <Icon className="h-4 w-4" />
+                {s.mediumIcon ? (
+                  <MediumIcon className="h-4 w-4" />
+                ) : Icon ? (
+                  <Icon className="h-4 w-4" />
+                ) : null}
               </MagneticButton>
             );
           })}

@@ -7,6 +7,8 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   strength?: number;
   as?: "button" | "a";
   href?: string;
+  target?: string;
+  rel?: string;
 }
 
 export default function MagneticButton({
@@ -15,6 +17,8 @@ export default function MagneticButton({
   strength = 0.35,
   as = "button",
   href,
+  target,
+  rel,
   ...rest
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
@@ -44,7 +48,7 @@ export default function MagneticButton({
 
   if (as === "a") {
     return (
-      <a href={href} className="inline-flex">
+      <a href={href} target={target} rel={rel} className="inline-flex">
         {Inner}
       </a>
     );

@@ -52,7 +52,7 @@ export default function Navbar() {
           className="group inline-flex items-center gap-2 rounded-full border border-border-medium bg-bg-secondary/60 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-primary transition-all hover:border-accent hover:bg-accent-glow"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot" />
-          Available
+          Hire me
         </a>
       </nav>
     </header>
