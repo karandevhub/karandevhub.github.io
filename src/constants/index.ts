@@ -63,7 +63,7 @@ export const SEO = {
   description: "Portfolio of Karan Kumar — building intelligent systems and immersive interfaces that bridge the gap between AI and reality. Specializing in React, Node.js, Python, and AI/ML.",
   keywords: "Karan Kumar, Full Stack Developer, AI Engineer, ML Engineer, Software Architect, React Developer, Node.js, Python, LangChain, Next.js, TanStack, Portfolio, Web Developer India, AI Developer, karandevhub",
   author: "Karan Kumar",
-  url: "https://karandevhub.github.io",
+  url: "https://karandevhub.github.io/",
   twitter: "@KaranKumar37664",
   ogImage: "https://karandevhub.github.io/og-image.jpeg",
   googleAnalyticsId: "G-LT9995K7ZD",
