@@ -66,26 +66,6 @@ export default function AboutSection() {
           </motion.div>
 
           <div className="my-10 h-px w-full bg-border-subtle" />
-
-          <div className="grid gap-8 sm:grid-cols-3">
-            {ABOUT.values.map((v) => (
-              <ScrollReveal key={v.label}>
-                <div className="group flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border-medium bg-bg-secondary transition-colors group-hover:border-accent">
-                    <v.icon className="h-4 w-4 text-text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-display text-base font-semibold text-text-primary">
-                      {v.label}
-                    </div>
-                    <p className="mt-1 text-sm text-text-secondary leading-relaxed">
-                      {v.desc}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </div>
     </section>
