@@ -91,8 +91,7 @@ export default function SkillsSection() {
                   <div className="mb-6 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div
-                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-medium bg-bg-tertiary"
-                        style={{ color: "var(--accent)" }}
+                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-medium bg-bg-tertiary text-text-primary"
                       >
                         <Icon className="h-4 w-4" />
                       </div>
@@ -124,8 +123,8 @@ export default function SkillsSection() {
                           className="group flex flex-col items-center justify-center gap-2 cursor-default rounded-xl border border-transparent bg-transparent p-1.5 sm:p-2 transition-all hover:-translate-y-1 hover:border-border-medium hover:bg-bg-tertiary/30 hover:shadow-[0_0_20px_-4px_var(--accent-glow)] w-full"
                         >
                           {isRAG ? (
-                            <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                              <span className="font-display font-black tracking-tighter text-text-primary text-xl sm:text-2xl drop-shadow-sm opacity-90">
+                            <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                              <span className="font-display font-black tracking-tighter text-text-primary text-2xl sm:text-3xl drop-shadow-sm opacity-90">
                                 RAG
                               </span>
                             </div>
@@ -133,11 +132,11 @@ export default function SkillsSection() {
                             <img 
                               src={getLogoUrl(s.name)} 
                               alt={s.name} 
-                              className={`h-10 w-10 sm:h-12 sm:w-12 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${isDarkLogo ? 'invert opacity-90' : ''}`} 
+                              className={`h-12 w-12 sm:h-14 sm:w-14 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${isDarkLogo ? 'invert opacity-90' : ''}`} 
                               loading="lazy"
                             />
                           )}
-                          <span className="text-[10px] sm:text-[11px] text-center leading-tight transition-colors group-hover:text-text-primary text-text-secondary font-medium">
+                          <span className="text-xs sm:text-sm text-center leading-tight transition-colors group-hover:text-text-primary text-text-primary font-medium">
                             {s.name}
                           </span>
                         </motion.li>
