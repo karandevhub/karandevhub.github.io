@@ -23,7 +23,7 @@ export default {
           title: track.name,
           artist: track.artist["#text"],
           albumArt: track.image[3]["#text"] || track.image[2]["#text"],
-          songUrl: `https://open.spotify.com/search/${encodeURIComponent(track.name + " " + track.artist["#text"])}/tracks`,
+          songUrl: `https://open.spotify.com/search/${encodeURIComponent(track.name + " " + track.artist["#text"])}`,
           debug: "Last.fm Mode Active!"
         }),
         { headers: corsHeaders }
