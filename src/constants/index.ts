@@ -5,8 +5,7 @@ export const IDENTITY = {
   title: "Full Stack & AI Engineer",
   roles: [
     "Full Stack Developer",
-    "AI & ML Engineer",
-    "Software Architect",
+    "AI & ML Enthusiast",
   ],
   bio: "I build intelligent systems and immersive interfaces that bridge the gap between AI and reality. Turning complex problems into elegant solutions.",
   available: true,

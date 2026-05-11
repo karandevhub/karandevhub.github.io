@@ -105,10 +105,9 @@ export default function HeroSection() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -24, opacity: 0 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute left-0 whitespace-nowrap"
-                style={{ color: "var(--accent)" }}
+                className="absolute left-0 whitespace-nowrap text-text-primary"
               >
-                I am a {IDENTITY.roles[roleIdx]}
+                I am a <span style={{ color: "var(--accent)" }}>{IDENTITY.roles[roleIdx]}</span>
               </motion.span>
             </AnimatePresence>
           </span>
@@ -116,12 +115,12 @@ export default function HeroSection() {
 
         {/* ── Meta: location + current work ── */}
         <div data-hero-fade className="mb-7 sm:mb-7 flex flex-col gap-2">
-          <div className="flex items-center gap-2 text-base text-text-primary">
-            <MapPin className="h-5 w-5 text-text-primary flex-shrink-0" />
+          <div className="flex items-center gap-2 text-base text-text-secondary">
+            <MapPin className="h-5 w-5 text-text-secondary flex-shrink-0" />
             <span>{IDENTITY.location}</span>
           </div>
-          <div className="flex items-center gap-2 text-base text-text-primary">
-            <Briefcase className="h-5 w-5 text-text-primary flex-shrink-0" />
+          <div className="flex items-center gap-2 text-base text-text-secondary">
+            <Briefcase className="h-5 w-5 text-text-secondary flex-shrink-0" />
             <span>{IDENTITY.currentWork}</span>
           </div>
         </div>
@@ -136,7 +135,7 @@ export default function HeroSection() {
               rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
               aria-label={s.label}
               title={s.label}
-              className={`group flex h-11 w-11 items-center justify-center rounded-full border border-border-medium bg-bg-secondary/60 text-text-primary transition-all duration-200 hover:border-accent hover:bg-accent-glow hover:text-accent hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 ${
+              className={`group flex h-11 w-11 items-center justify-center rounded-full border border-border-medium bg-bg-secondary/60 text-text-primary opacity-80 transition-all duration-200 hover:border-accent hover:bg-accent-glow hover:text-accent hover:scale-110 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 ${
                 s.label === "Medium" || s.label === "Instagram" ? "hidden sm:flex" : "flex"
               }`}
             >
@@ -151,7 +150,7 @@ export default function HeroSection() {
           {/* Resume pill */}
           <a
             href={CONTACT.resumeUrl}
-            className="group inline-flex items-center gap-2.5 rounded-full border border-border-medium bg-bg-secondary/60 px-6 py-2.5 text-base font-medium text-text-primary transition-all duration-200 hover:border-accent hover:bg-accent-glow hover:text-accent"
+            className="group inline-flex items-center gap-2.5 rounded-full border border-border-medium bg-bg-secondary/60 px-6 py-2.5 text-base font-medium text-text-primary opacity-80 transition-all duration-200 hover:border-accent hover:bg-accent-glow hover:text-accent hover:opacity-100"
           >
             <Download className="h-4.5 w-4.5" />
             Resume
