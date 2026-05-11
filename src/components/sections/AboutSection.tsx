@@ -17,7 +17,7 @@ export default function AboutSection() {
             <div
               className="absolute inset-0 -rotate-2 rounded-2xl border border-border-strong bg-bg-secondary transition-transform duration-500 hover:rotate-0 hover:scale-[1.02]"
               style={{
-                backgroundImage: `url(/profile-image.jpg)`,
+                backgroundImage: `url(/profile-image.webp)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 boxShadow:

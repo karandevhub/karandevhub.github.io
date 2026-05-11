@@ -2,6 +2,7 @@
 import { motion, useMotionValue, useMotionTemplate, useSpring } from "framer-motion";
 import { useRef } from "react";
 import * as Icons from "lucide-react";
+import Image from "next/image";
 import { skills, getLogoUrl } from "@/data/skills";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -129,11 +130,13 @@ export default function SkillsSection() {
                               </span>
                             </div>
                           ) : (
-                            <img 
+                            <Image 
                               src={getLogoUrl(s.name)} 
                               alt={s.name} 
+                              width={56}
+                              height={56}
+                              style={{ height: 'auto' }}
                               className={`h-12 w-12 sm:h-14 sm:w-14 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${isDarkLogo ? 'invert opacity-90' : ''}`} 
-                              loading="lazy"
                             />
                           )}
                           <span className="text-xs sm:text-sm text-center leading-tight transition-colors group-hover:text-text-primary text-text-primary font-medium">

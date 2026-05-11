@@ -12,8 +12,10 @@ function Counter({ value, suffix }: { value: number; suffix?: string }) {
   const mv = useMotionValue(0);
   const spring = useSpring(mv, { duration: 1800, bounce: 0 });
   const [display, setDisplay] = useState("0");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (inView) mv.set(value);
   }, [inView, mv, value]);
 
@@ -25,7 +27,7 @@ function Counter({ value, suffix }: { value: number; suffix?: string }) {
 
   return (
     <span ref={ref}>
-      {display}
+      {mounted ? display : "0"}
       {suffix}
     </span>
   );

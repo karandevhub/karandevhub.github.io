@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import SkillsSection from "@/components/sections/SkillsSection";
@@ -9,28 +8,9 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import BlogSection from "@/components/sections/BlogSection";
 import ContactSection from "@/components/sections/ContactSection";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Karan Kumar — Full Stack & AI Engineer" },
-      {
-        name: "description",
-        content:
-          "Full Stack & AI Engineer specializing in intelligent systems and immersive interfaces.",
-      },
-      { property: "og:title", content: "Karan Kumar — Full Stack & AI Engineer" },
-      {
-        property: "og:description",
-        content: "Building intelligent systems that bridge the gap between AI and reality.",
-      },
-    ],
-  }),
-  component: Home,
-});
-
-function Home() {
+export default function Home() {
   return (
-    <main className="relative">
+    <div className="relative">
       <HeroSection />
       <AboutSection />
       <SkillsSection />
@@ -40,6 +20,6 @@ function Home() {
       <TestimonialsSection />
       <BlogSection />
       <ContactSection />
-    </main>
+    </div>
   );
 }

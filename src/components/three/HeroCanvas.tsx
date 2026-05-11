@@ -1,10 +1,15 @@
 "use client";
-import { Suspense, lazy } from "react";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
-const Canvas = lazy(() =>
-  import("@react-three/fiber").then((m) => ({ default: m.Canvas }))
+const Canvas = dynamic(
+  () => import("@react-three/fiber").then((m) => m.Canvas),
+  { ssr: false }
 );
-const ParticleField = lazy(() => import("./ParticleField"));
+
+const ParticleField = dynamic(() => import("./ParticleField"), {
+  ssr: false,
+});
 
 export default function HeroCanvas() {
   return (
@@ -22,7 +27,6 @@ export default function HeroCanvas() {
           camera={{ position: [0, 0, 6], fov: 60 }}
           gl={{ antialias: true, alpha: true }}
           style={{ pointerEvents: "none" }}
-          events={() => ({} as any)}
         >
           <ParticleField />
         </Canvas>

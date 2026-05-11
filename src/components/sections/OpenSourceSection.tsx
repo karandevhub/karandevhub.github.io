@@ -46,9 +46,11 @@ const githubTheme = {
 export default function OpenSourceSection() {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const username = "karandevhub";
 
   useEffect(() => {
+    setMounted(true);
     async function fetchCalendar() {
       try {
         setLoading(true);
@@ -129,18 +131,22 @@ export default function OpenSourceSection() {
         <GlassCard className="mb-12 w-full">
           <div className="w-full py-2">
             <div className="github-calendar-wrapper">
-              <ActivityCalendar
-                data={data}
-                theme={githubTheme}
-                colorScheme="dark"
-                fontSize={12}
-                blockSize={13}
-                blockMargin={3}
-                loading={loading}
-                labels={{
-                  totalCount: "{{count}} contributions in the last year",
-                }}
-              />
+              {mounted ? (
+                <ActivityCalendar
+                  data={data}
+                  theme={githubTheme}
+                  colorScheme="dark"
+                  fontSize={12}
+                  blockSize={13}
+                  blockMargin={3}
+                  loading={loading}
+                  labels={{
+                    totalCount: "{{count}} contributions in the last year",
+                  }}
+                />
+              ) : (
+                <div className="h-[150px] w-full animate-pulse rounded-lg bg-white/5" />
+              )}
             </div>
           </div>
         </GlassCard>

@@ -12,34 +12,36 @@ export default function Footer() {
             {IDENTITY.bio}
           </p>
         </div>
-        <div>
-          <div className="text-eyebrow mb-4">Navigate</div>
-          <ul className="space-y-2 text-sm text-text-secondary">
-            {NAVIGATION.links.map((l) => (
-              <li key={l.id}>
-                <a href={l.href} className="hover:text-text-primary">
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex flex-col items-start gap-4">
-          <div className="text-eyebrow">Connect</div>
-          <div className="flex gap-4 text-xs text-text-muted">
-            {CONTACT.socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                className="transition-colors hover:text-text-primary"
-              >
-                {s.label}
-              </a>
-            ))}
+        <div className="grid grid-cols-2 gap-10 md:contents">
+          <div>
+            <div className="text-eyebrow mb-4">Navigate</div>
+            <ul className="space-y-2 text-sm text-text-secondary">
+              {NAVIGATION.links.map((l) => (
+                <li key={l.id}>
+                  <a href={l.href} className="hover:text-text-primary">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="mt-2 flex flex-col gap-1">
-            <div className="text-eyebrow text-[10px]">Location</div>
-            <div className="text-xs text-text-secondary">{IDENTITY.location}</div>
+          <div className="flex flex-col items-start gap-4">
+            <div className="text-eyebrow">Connect</div>
+            <div className="flex flex-col gap-2 text-sm text-text-secondary">
+              {CONTACT.socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  className="transition-colors hover:text-text-primary"
+                >
+                  {s.label}
+                </a>
+              ))}
+            </div>
+            <div className="mt-4 flex flex-col gap-1">
+              <div className="text-eyebrow text-[10px]">Location</div>
+              <div className="text-xs text-text-secondary">{IDENTITY.location}</div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
@@ -8,6 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -36,33 +40,38 @@ export default function Navbar() {
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between">
-        <Link to="/" className="group flex items-center gap-2">
+        <Link href="/" className="group flex items-center gap-2">
           <span className="font-logo text-4xl sm:text-3xl md:text-4xl text-text-primary">
             Karan Kumar
           </span>
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
-          {navLinks.map((l) => (
-            <li key={l.id}>
-              {l.href.startsWith("/") ? (
-                <Link
-                  to={l.href as any}
-                  className="rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary transition-colors hover:text-text-primary"
-                  activeProps={{ className: "text-accent" }}
-                >
-                  {l.label}
-                </Link>
-              ) : (
-                <a
-                  href={l.href}
-                  className="rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary transition-colors hover:text-text-primary"
-                >
-                  {l.label}
-                </a>
-              )}
-            </li>
-          ))}
+          {navLinks.map((l) => {
+            const isActive = pathname === l.href;
+            return (
+              <li key={l.id}>
+                {l.href.startsWith("/") ? (
+                  <Link
+                    href={l.href}
+                    className={cn(
+                      "rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors hover:text-text-primary",
+                      isActive ? "text-accent" : "text-text-secondary"
+                    )}
+                  >
+                    {l.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={l.href}
+                    className="rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary transition-colors hover:text-text-primary"
+                  >
+                    {l.label}
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
 
         <div className="flex items-center gap-3">
@@ -108,33 +117,38 @@ export default function Navbar() {
 
             <nav className="flex h-[calc(100vh-64px)] flex-col justify-center px-8">
               <ul className="flex flex-col gap-8">
-                {navLinks.map((l, i) => (
-                  <motion.li
-                    key={l.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    {l.href.startsWith("/") ? (
-                      <Link
-                        to={l.href as any}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block font-display text-5xl font-semibold text-text-primary transition-colors hover:text-accent active:text-accent"
-                        activeProps={{ className: "text-accent" }}
-                      >
-                        {l.label}
-                      </Link>
-                    ) : (
-                      <a
-                        href={l.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block font-display text-5xl font-semibold text-text-primary transition-colors hover:text-accent active:text-accent"
-                      >
-                        {l.label}
-                      </a>
-                    )}
-                  </motion.li>
-                ))}
+                {navLinks.map((l, i) => {
+                  const isActive = pathname === l.href;
+                  return (
+                    <motion.li
+                      key={l.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                    >
+                      {l.href.startsWith("/") ? (
+                        <Link
+                          href={l.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={cn(
+                            "block font-display text-5xl font-semibold transition-colors hover:text-accent active:text-accent",
+                            isActive ? "text-accent" : "text-text-primary"
+                          )}
+                        >
+                          {l.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={l.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block font-display text-5xl font-semibold text-text-primary transition-colors hover:text-accent active:text-accent"
+                        >
+                          {l.label}
+                        </a>
+                      )}
+                    </motion.li>
+                  );
+                })}
               </ul>
             </nav>
           </motion.div>

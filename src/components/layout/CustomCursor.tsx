@@ -1,14 +1,18 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
   const [mode, setMode] = useState<"default" | "hover" | "project" | "click">(
     "default"
   );
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (typeof window === "undefined") return;
     const isTouch = window.matchMedia("(hover: none)").matches;
     if (isTouch) {
@@ -70,7 +74,7 @@ export default function CustomCursor() {
     };
   }, []);
 
-  if (hidden) return null;
+  if (!mounted || hidden) return null;
 
   const ringSize =
     mode === "project" ? 72 : mode === "hover" ? 48 : mode === "click" ? 20 : 32;

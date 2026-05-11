@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Quote } from "lucide-react";
+import Image from "next/image";
 import { testimonials } from "@/data/testimonials";
 import SectionLabel from "@/components/ui/SectionLabel";
 
@@ -52,12 +53,12 @@ export default function TestimonialsSection() {
                 "{t.quote}"
               </blockquote>
               <div className="mt-8 flex items-center gap-4">
-                <img
+                <Image
                   src={t.avatar}
                   alt={t.name}
                   width={48}
                   height={48}
-                  loading="lazy"
+                  style={{ height: 'auto' }}
                   className="h-12 w-12 rounded-full border border-border-medium object-cover"
                 />
                 <div>
