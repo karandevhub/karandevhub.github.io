@@ -73,11 +73,18 @@ export default function SkillsSection() {
               cat.icon
             ] || Icons.Sparkles;
             const span =
-              idx < 3
-                ? "md:col-span-4"
-                : idx === 3
-                ? "md:col-span-7"
-                : "md:col-span-5";
+              cat.category === "Programming Languages" ? "md:col-span-4" :
+              cat.category === "Frontend Development" ? "md:col-span-5" :
+              cat.category === "AI & ML Tools" ? "md:col-span-3" :
+              cat.category === "Backend & Database" ? "md:col-span-8" :
+              "md:col-span-4";
+
+            const gridCols = 
+              cat.category === "Backend & Database" ? "grid-cols-4 md:grid-cols-8" :
+              cat.category === "Frontend Development" ? "grid-cols-4 md:grid-cols-5" :
+              cat.category === "AI & ML Tools" ? "grid-cols-3" :
+              "grid-cols-4";
+
             return (
               <ScrollReveal key={cat.category} delay={idx * 0.05} className={span}>
                 <SpotlightCard className="h-full glass border border-border-medium p-6">
@@ -98,14 +105,14 @@ export default function SkillsSection() {
                     </span>
                   </div>
                   <motion.ul
-                    className="flex flex-wrap gap-3"
+                    className={`grid gap-1.5 sm:gap-2 w-full ${gridCols}`}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
                     variants={{ show: { transition: { staggerChildren: 0.04 } } }}
                   >
                     {cat.items.map((s) => {
-                      const isDarkLogo = ["Next.js", "Express.js", "Git/GitHub", "Fastify"].includes(s.name);
+                      const isDarkLogo = ["Next.js", "Express.js", "Git/GitHub", "Fastify", "Rust"].includes(s.name);
                       const isRAG = s.name === "RAG";
                       return (
                         <motion.li
@@ -114,17 +121,23 @@ export default function SkillsSection() {
                             hidden: { opacity: 0, y: 10 },
                             show: { opacity: 1, y: 0 },
                           }}
-                          className="group flex items-center gap-2.5 cursor-default rounded-xl border border-border-medium bg-bg-tertiary/50 px-3 py-2 transition-all hover:-translate-y-1 hover:border-accent hover:bg-bg-tertiary hover:shadow-[0_0_20px_-4px_var(--accent-glow)]"
+                          className="group flex flex-col items-center justify-center gap-2 cursor-default rounded-xl border border-transparent bg-transparent p-1.5 sm:p-2 transition-all hover:-translate-y-1 hover:border-border-medium hover:bg-bg-tertiary/30 hover:shadow-[0_0_20px_-4px_var(--accent-glow)] w-full"
                         >
-                          {!isRAG && (
+                          {isRAG ? (
+                            <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                              <span className="font-display font-black tracking-tighter text-text-primary text-xl sm:text-2xl drop-shadow-sm opacity-90">
+                                RAG
+                              </span>
+                            </div>
+                          ) : (
                             <img 
                               src={getLogoUrl(s.name)} 
                               alt={s.name} 
-                              className={`h-5 w-5 object-contain ${isDarkLogo ? 'invert opacity-90' : ''}`} 
+                              className={`h-10 w-10 sm:h-12 sm:w-12 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${isDarkLogo ? 'invert opacity-90' : ''}`} 
                               loading="lazy"
                             />
                           )}
-                          <span className={`text-sm text-text-secondary group-hover:text-text-primary ${isRAG ? 'font-bold' : 'font-medium'}`}>
+                          <span className="text-[10px] sm:text-[11px] text-center leading-tight transition-colors group-hover:text-text-primary text-text-secondary font-medium">
                             {s.name}
                           </span>
                         </motion.li>

@@ -5,6 +5,7 @@ export const skills: Skill[] = [
     category: "Programming Languages",
     icon: "Code2",
     items: [
+      { name: "Java", level: 5 },
       { name: "TypeScript", level: 5 },
       { name: "JavaScript", level: 5 },
       { name: "C++", level: 4 },
@@ -34,6 +35,7 @@ export const skills: Skill[] = [
     category: "Backend & Database",
     icon: "Database",
     items: [
+      { name: "Rust", level: 4 },
       { name: "Node.js", level: 5 },
       { name: "Express.js", level: 5 },
       { name: "Fastify", level: 4 },
@@ -57,6 +59,7 @@ export const skills: Skill[] = [
 
 export const getLogoUrl = (name: string) => {
   const map: Record<string, string> = {
+    "Java": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
     "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
     "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
     "C++": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
@@ -79,6 +82,7 @@ export const getLogoUrl = (name: string) => {
     "RAG": "https://cdn.simpleicons.org/openai/412991", 
     "Fastify": "https://cdn.simpleicons.org/fastify/000000",
     "Socket.io": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/socketio/socketio-original.svg",
+    "Rust": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg",
   };
   return map[name] || `https://cdn.simpleicons.org/${name.toLowerCase().replace(/[^a-z0-9]/g, '')}/0ea5e9`;
 };
