@@ -47,7 +47,7 @@ export default function SpotifyWidget() {
     };
 
     fetchTrack();
-    const interval = setInterval(fetchTrack, 30000);
+    const interval = setInterval(fetchTrack, 10000);
     return () => clearInterval(interval);
   }, []);
 
