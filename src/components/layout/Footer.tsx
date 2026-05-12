@@ -24,6 +24,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <div className="mt-8 flex flex-col gap-1">
+              <div className="text-eyebrow text-[10px]">Location</div>
+              <div className="text-xs text-text-secondary">{IDENTITY.location}</div>
+            </div>
           </div>
           <div className="flex flex-col items-start gap-4">
             <div className="text-eyebrow">Connect</div>
@@ -37,10 +41,6 @@ export default function Footer() {
                   {s.label}
                 </a>
               ))}
-            </div>
-            <div className="mt-4 flex flex-col gap-1">
-              <div className="text-eyebrow text-[10px]">Location</div>
-              <div className="text-xs text-text-secondary">{IDENTITY.location}</div>
             </div>
           </div>
         </div>

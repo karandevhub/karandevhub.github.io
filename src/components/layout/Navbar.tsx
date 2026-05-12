@@ -110,6 +110,7 @@ export default function Navbar() {
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-border-medium bg-bg-secondary/60 text-text-primary"
+                aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
               </button>

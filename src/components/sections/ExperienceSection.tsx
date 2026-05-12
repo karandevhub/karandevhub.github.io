@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { experience } from "@/data/experience";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
@@ -122,15 +123,15 @@ export default function ExperienceSection() {
                           {e.period}
                         </span>
                         {e.current && (
-                          <span
-                            className="rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest"
+                          <Badge
+                            className="rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest font-normal"
                             style={{
                               background: "var(--accent-glow)",
                               color: "var(--accent)",
                             }}
                           >
                             Current
-                          </span>
+                          </Badge>
                         )}
                       </div>
                       <h3 className="font-display text-2xl font-semibold text-text-primary">
@@ -152,12 +153,9 @@ export default function ExperienceSection() {
                       </ul>
                       <div className="mt-5 flex flex-wrap gap-1.5 border-t border-border-subtle pt-4">
                         {e.tech.map((t) => (
-                          <span
-                            key={t}
-                            className="rounded border border-border-subtle px-2 py-0.5 font-mono text-[10px] text-text-muted"
-                          >
+                          <Badge key={t} variant="outline" className="font-mono text-[10px] text-text-muted border-border-subtle rounded px-2 py-0.5 font-normal">
                             {t}
-                          </span>
+                          </Badge>
                         ))}
                       </div>
                     </div>

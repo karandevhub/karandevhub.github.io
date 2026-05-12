@@ -1,24 +1,17 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Copy, Check } from "lucide-react";
 import MediumIcon from "@/components/ui/MediumIcon";
-import { CONTACT, IDENTITY } from "@/constants";
+import { CONTACT } from "@/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import MagneticButton from "@/components/ui/MagneticButton";
 
-
 export default function ContactSection() {
-  const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(CONTACT.email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch {}
-  };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,32 +45,7 @@ export default function ContactSection() {
           you're shipping something that deserves real care, say hello.
         </p>
 
-        <div className="mt-12 flex justify-center">
-          <button
-            onClick={copy}
-            className="group relative inline-flex items-center gap-3 font-display text-lg font-medium md:text-4xl"
-          >
-            <span className="shimmer-text break-all text-text-primary transition-colors">
-              {CONTACT.email}
-            </span>
-            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border-medium text-text-secondary transition-colors group-hover:border-accent group-hover:text-accent">
-              {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-            </span>
-          </button>
-        </div>
-        <AnimatePresence>
-          {copied && (
-            <motion.div
-              initial={{ opacity: 0, y: -6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              className="mt-3 font-mono text-xs"
-              style={{ color: "var(--accent)" }}
-            >
-              Copied to clipboard.
-            </motion.div>
-          )}
-        </AnimatePresence>
+
 
         <div className="mt-10 flex justify-center gap-3">
           {CONTACT.socials.map((s) => {
@@ -89,6 +57,8 @@ export default function ContactSection() {
                 href={s.href}
                 target={s.href.startsWith("mailto") ? undefined : "_blank"}
                 rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                aria-label={s.label}
+                title={s.label}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-border-medium bg-bg-secondary text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
               >
                 {s.mediumIcon ? (
@@ -107,43 +77,49 @@ export default function ContactSection() {
           className="glass mx-auto mt-16 grid max-w-2xl gap-4 rounded-3xl p-6 text-left md:p-8"
         >
           <div className="grid gap-4 md:grid-cols-2">
-            <label className="block">
-              <span className="text-eyebrow">Name</span>
-              <input
+            <div className="grid gap-2">
+              <Label htmlFor="name" className="text-eyebrow">Name</Label>
+              <Input
+                id="name"
+                name="name"
                 required
-                className="mt-2 w-full rounded-lg border border-border-medium bg-bg-tertiary px-4 py-3 text-sm text-text-primary outline-none transition-colors focus:border-accent"
+                className="h-12 bg-bg-tertiary"
                 placeholder="Jane Doe"
               />
-            </label>
-            <label className="block">
-              <span className="text-eyebrow">Email</span>
-              <input
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="email" className="text-eyebrow">Email</Label>
+              <Input
+                id="email"
+                name="email"
                 required
                 type="email"
-                className="mt-2 w-full rounded-lg border border-border-medium bg-bg-tertiary px-4 py-3 text-sm text-text-primary outline-none transition-colors focus:border-accent"
+                className="h-12 bg-bg-tertiary"
                 placeholder="jane@company.com"
               />
-            </label>
+            </div>
           </div>
-          <label className="block">
-            <span className="text-eyebrow">Message</span>
-            <textarea
+          <div className="grid gap-2">
+            <Label htmlFor="message" className="text-eyebrow">Message</Label>
+            <Textarea
+              id="message"
+              name="message"
               required
               rows={4}
-              className="mt-2 w-full resize-none rounded-lg border border-border-medium bg-bg-tertiary px-4 py-3 text-sm text-text-primary outline-none transition-colors focus:border-accent"
+              className="resize-none bg-bg-tertiary"
               placeholder="Tell me about what you're building…"
             />
-          </label>
-          <div className="flex items-center justify-between">
+          </div>
+          <div className="flex items-center justify-between mt-2">
             <span className="font-mono text-xs text-text-muted">
               Replies within 48h.
             </span>
-            <button
+            <Button
               type="submit"
-              className="inline-flex items-center gap-2 rounded-full bg-text-primary px-5 py-2.5 text-sm font-medium text-bg-primary transition-transform hover:scale-[1.02]"
+              className="rounded-full px-6 py-5 text-sm"
             >
               {submitted ? "Sent ✓" : "Send message"}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

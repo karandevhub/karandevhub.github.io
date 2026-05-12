@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { projects } from "@/data/projects";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { cn } from "@/lib/utils";
 
@@ -75,12 +77,9 @@ export default function ProjectsSection() {
                 <div>
                   <div className="mb-4 flex flex-wrap items-center gap-2">
                     {p.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-border-medium bg-bg-secondary px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-text-secondary"
-                      >
+                      <Badge key={t} variant="secondary" className="font-mono text-[10px] uppercase tracking-widest text-text-secondary bg-bg-secondary border-border-medium">
                         {t}
-                      </span>
+                      </Badge>
                     ))}
                   </div>
                   <h3 className="text-h1 font-display font-semibold text-text-primary">
@@ -118,30 +117,25 @@ export default function ProjectsSection() {
 
                   <div className="mt-6 flex flex-wrap gap-1.5">
                     {p.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded border border-border-subtle px-2 py-0.5 font-mono text-[10px] text-text-muted"
-                      >
+                      <Badge key={t} variant="outline" className="font-mono text-[10px] text-text-muted border-border-subtle rounded px-2 py-0.5 font-normal">
                         {t}
-                      </span>
+                      </Badge>
                     ))}
                   </div>
 
                   <div className="mt-8 flex flex-wrap items-center gap-4">
-                    <a
-                      href={p.liveUrl}
-                      className="inline-flex items-center gap-2 rounded-full bg-text-primary px-5 py-2.5 text-sm font-medium text-bg-primary transition-transform hover:scale-[1.02]"
-                    >
-                      Live demo
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                    <a
-                      href={p.githubUrl}
-                      className="inline-flex items-center gap-2 rounded-full border border-border-strong px-5 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-accent hover:bg-accent-glow"
-                    >
-                      <Github className="h-4 w-4" />
-                      GitHub
-                    </a>
+                    <Button asChild className="rounded-full px-5 py-5 text-sm transition-transform hover:scale-[1.02]">
+                      <a href={p.liveUrl}>
+                        Live demo
+                        <ExternalLink className="ml-2 h-3.5 w-3.5" />
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline" className="rounded-full px-5 py-5 text-sm transition-colors hover:border-accent hover:bg-accent-glow hover:text-text-primary">
+                      <a href={p.githubUrl}>
+                        <Github className="mr-2 h-4 w-4" />
+                        GitHub
+                      </a>
+                    </Button>
                     <a
                       href="#"
                       className="story-link group/link relative inline-flex items-center gap-1 text-sm font-medium text-text-primary"
