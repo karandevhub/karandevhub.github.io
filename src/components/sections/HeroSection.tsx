@@ -3,9 +3,15 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download, MapPin, Briefcase } from "lucide-react";
-import HeroCanvas from "@/components/three/HeroCanvas";
+import dynamic from "next/dynamic";
+
+const HeroCanvas = dynamic(() => import("@/components/three/HeroCanvas"), {
+  ssr: false,
+});
 import { IDENTITY, CONTACT } from "@/constants";
-import SpotifyWidget from "@/components/ui/SpotifyWidget";
+const SpotifyWidget = dynamic(() => import("@/components/ui/SpotifyWidget"), {
+  ssr: false,
+});
 import MediumIcon from "@/components/ui/MediumIcon";
 
 export default function HeroSection() {
