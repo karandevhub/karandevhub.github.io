@@ -7,6 +7,7 @@ import { navLinks } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -75,21 +76,22 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full border border-border-medium bg-bg-secondary/60 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-primary transition-all hover:border-accent hover:bg-accent-glow"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot" />
-            Hire me
-          </a>
+          <Button asChild variant="outline" className="h-9 rounded-full border-border-medium bg-bg-secondary/60 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-primary transition-all hover:border-accent hover:bg-accent-glow">
+            <a href="#contact">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot mr-2" />
+              Hire me
+            </a>
+          </Button>
           
-          <button
+          <Button
+            variant="outline"
+            size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border-medium bg-bg-secondary/60 text-text-primary transition-colors hover:border-accent md:hidden"
+            className="h-10 w-10 rounded-full border-border-medium bg-bg-secondary/60 text-text-primary transition-colors hover:border-accent md:hidden"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
+          </Button>
         </div>
       </nav>
 
@@ -107,13 +109,15 @@ export default function Navbar() {
               <span className="font-logo text-3xl text-text-primary">
                 Karan Kumar
               </span>
-              <button
+              <Button
+                variant="outline"
+                size="icon"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border-medium bg-bg-secondary/60 text-text-primary"
+                className="h-10 w-10 rounded-full border-border-medium bg-bg-secondary/60 text-text-primary"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
-              </button>
+              </Button>
             </div>
 
             <nav className="flex h-[calc(100vh-64px)] flex-col justify-center px-8">

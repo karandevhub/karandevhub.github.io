@@ -88,7 +88,7 @@ export default function SkillsSection() {
 
             return (
               <ScrollReveal key={cat.category} delay={idx * 0.05} className={span}>
-                <SpotlightCard className="h-full glass border border-border-medium p-6">
+                <SpotlightCard className="h-full glass border border-border-medium p-4 sm:p-6">
                   <div className="mb-6 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div

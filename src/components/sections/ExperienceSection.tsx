@@ -109,7 +109,7 @@ export default function ExperienceSection() {
                   >
                     <div
                       className={cn(
-                        "rounded-2xl border bg-bg-secondary p-6 transition-colors hover:border-border-strong",
+                        "rounded-2xl border bg-bg-secondary p-4 sm:p-6 transition-colors hover:border-border-strong",
                         e.current ? "border-accent" : "border-border-medium"
                       )}
                       style={

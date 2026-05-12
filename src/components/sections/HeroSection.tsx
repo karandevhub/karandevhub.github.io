@@ -13,6 +13,7 @@ const SpotifyWidget = dynamic(() => import("@/components/ui/SpotifyWidget"), {
   ssr: false,
 });
 import MediumIcon from "@/components/ui/MediumIcon";
+import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
   const root = useRef<HTMLElement>(null);
@@ -154,13 +155,12 @@ export default function HeroSection() {
           ))}
 
           {/* Resume pill */}
-          <a
-            href={CONTACT.resumeUrl}
-            className="group inline-flex items-center gap-2 rounded-full border border-border-medium bg-bg-secondary/60 px-5 py-2 text-sm font-medium text-text-primary opacity-80 transition-all duration-200 hover:border-accent hover:bg-accent-glow hover:text-accent hover:opacity-100"
-          >
-            <Download className="h-4 w-4" />
-            Resume
-          </a>
+          <Button asChild variant="outline" className="h-10 rounded-full border-border-medium bg-bg-secondary/60 px-5 py-2 text-sm font-medium text-text-primary opacity-80 transition-all duration-200 hover:border-accent hover:bg-accent-glow hover:text-accent hover:opacity-100">
+            <a href={CONTACT.resumeUrl}>
+              <Download className="h-4 w-4 mr-2" />
+              Resume
+            </a>
+          </Button>
         </div>
 
         {/* ── Spotify widget ── */}

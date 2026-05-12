@@ -158,7 +158,7 @@ export default function OpenSourceSection() {
               href={`https://github.com/${username}/${r.name}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-2xl border border-border-medium bg-bg-secondary p-6 transition-all hover:-translate-y-1 hover:border-accent hover:shadow-[0_20px_60px_-20px_var(--accent-glow)]"
+              className="group block rounded-2xl border border-border-medium bg-bg-secondary p-4 sm:p-6 transition-all hover:-translate-y-1 hover:border-accent hover:shadow-[0_20px_60px_-20px_var(--accent-glow)]"
             >
               <div className="mb-2 flex items-center gap-2">
                 <Github className="h-4 w-4 text-text-muted" />

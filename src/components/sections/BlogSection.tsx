@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Clock } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { Button } from "@/components/ui/button";
 
 const POSTS = [
   {
@@ -52,13 +53,12 @@ export default function BlogSection({ isPage = false }: { isPage?: boolean }) {
               Things I think about, out loud.
             </h2>
           </div>
-          <a
-            href="#"
-            className="story-link inline-flex items-center gap-2 text-sm font-medium text-text-primary"
-          >
-            Read all articles
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
+          <Button asChild variant="ghost" className="inline-flex items-center gap-2 text-sm font-medium text-text-primary">
+            <a href="#">
+              Read all articles
+              <ArrowUpRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">

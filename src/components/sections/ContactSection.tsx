@@ -74,7 +74,7 @@ export default function ContactSection() {
 
         <form
           onSubmit={submit}
-          className="glass mx-auto mt-16 grid max-w-2xl gap-4 rounded-3xl p-6 text-left md:p-8"
+          className="glass mx-auto mt-16 grid max-w-2xl gap-4 rounded-3xl p-4 sm:p-6 text-left md:p-8"
         >
           <div className="grid gap-4 md:grid-cols-2">
             <div className="grid gap-2">
