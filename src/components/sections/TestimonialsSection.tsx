@@ -20,7 +20,7 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      className="relative w-full bg-bg-primary px-6 py-24 lg:px-10 lg:py-40"
+      className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >

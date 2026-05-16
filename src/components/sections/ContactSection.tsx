@@ -22,7 +22,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative w-full overflow-hidden bg-bg-primary px-6 py-32 lg:px-10 lg:py-48"
+      className="relative w-full overflow-hidden bg-bg-primary px-6 py-16 lg:px-10 lg:py-24"
     >
       <div
         className="pointer-events-none absolute inset-0"

@@ -108,7 +108,7 @@ export default function OpenSourceSection() {
   }, [username]);
 
   return (
-    <section className="relative w-full bg-bg-primary px-6 py-24 lg:px-10 lg:py-40">
+    <section className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>

@@ -22,8 +22,8 @@ export default async function Home() {
       <ExperienceSection />
       <ProjectsSection />
       <OpenSourceSection />
-      <TestimonialsSection />
       <BlogSection posts={posts} />
+      {/* <TestimonialsSection /> */}
       <ContactSection />
     </div>
   );
