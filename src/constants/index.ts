@@ -1,20 +1,22 @@
 import { Github, Linkedin, Twitter, Sparkles, Wrench, Compass, Instagram, Mail } from "lucide-react";
 
 export const IDENTITY = {
-  name: "Karan Kumar",
+  name: "Karan Kumar Mahato",
   title: "Full Stack & AI Engineer",
   roles: [
     "Full Stack Developer",
-    "AI & ML Enthusiast",
+    "AI & ML Specialist",
+    "Mobile App Developer",
   ],
-  bio: "I build intelligent systems and immersive interfaces that bridge the gap between AI and reality. Turning complex problems into elegant solutions.",
+  bio: "I build scalable, high-performance applications and intelligent systems using modern frameworks and AI-powered technologies. Bridging the gap between complex logic and seamless user experiences.",
   available: true,
-  location: "Noida, India 🇮🇳",
-  currentWork: "Full Stack & AI Engineer @ Building cool stuff",
+  location: "Jharkhand, India 🇮🇳",
+  currentWork: "Application Developer @ Lawazia Tech Pvt. Ltd.",
 };
 
 export const CONTACT = {
   email: "karanmahatocse@gmail.com",
+  phone: "+91 7079648675",
   resumeUrl: "#",
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/itskaran/", icon: Linkedin },
@@ -38,9 +40,9 @@ export const NAVIGATION = {
 
 export const ABOUT = {
   paragraphs: [
-    "I'm a Full Stack & AI Engineer who lives at the intersection of complex logic and intuitive design.",
-    "I specialize in building intelligent applications that don't just function—they anticipate. My work ranges from deep neural network integrations to high-performance web ecosystems.",
-    "I believe the best technology is invisible, seamlessly empowering users to achieve more. When I'm not coding, I'm likely exploring the next frontier of AI or contributing to the open-source community.",
+    "I'm a Computer Science student at Dumka Engineering College specializing in Full-Stack Web and Mobile Development.",
+    "Experienced in building scalable, high-performance applications using modern frameworks and AI-powered technologies like LangChain and GenKit to deliver seamless, production-ready user experiences across platforms.",
+    "My work spans from building RAG-based LLM systems to high-performance geospatial dashboards and cross-platform mobile apps.",
   ],
   values: [
     {
@@ -50,8 +52,8 @@ export const ABOUT = {
     },
     {
       icon: Wrench,
-      label: "Build for the team behind you",
-      desc: "Code that reads well outlives code that runs fast. I optimize for the next person.",
+      label: "Build for the team",
+      desc: "Code that reads well outlives code that runs fast. I optimize for maintainability.",
     },
     {
       icon: Compass,
@@ -62,10 +64,10 @@ export const ABOUT = {
 };
 
 export const SEO = {
-  title: "Karan Kumar | Full Stack & AI Engineer",
-  description: "Portfolio of Karan Kumar — building intelligent systems and immersive interfaces that bridge the gap between AI and reality. Specializing in React, Node.js, Python, and AI/ML.",
-  keywords: "Karan Kumar, Full Stack Developer, AI Engineer, ML Engineer, Software Architect, React Developer, Node.js, Python, LangChain, Next.js, TanStack, Portfolio, Web Developer India, AI Developer, karandevhub",
-  author: "Karan Kumar",
+  title: "Karan Kumar Mahato | Full Stack & AI Engineer",
+  description: "Portfolio of Karan Kumar Mahato — specialized in Full-Stack Web and Mobile Development, building scalable AI-powered applications with React Native, Next.js, and LangChain.",
+  keywords: "Karan Kumar Mahato, Full Stack Developer, AI Engineer, ML Engineer, React Native Developer, LangChain, GenKit, RAG, Next.js, Node.js, India AI Developer, karandevhub",
+  author: "Karan Kumar Mahato",
   url: "https://karandevhub.github.io/",
   twitter: "@KaranKumar37664",
   ogImage: "https://karandevhub.github.io/og-image.jpeg",
