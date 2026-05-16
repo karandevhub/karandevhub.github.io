@@ -9,7 +9,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full bg-bg-primary px-6 py-24 lg:px-10 lg:py-40"
+      className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20"
     >
       <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.85fr_1.15fr]">
         <ScrollReveal>

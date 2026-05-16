@@ -35,7 +35,7 @@ function Counter({ value, suffix }: { value: number; suffix?: string }) {
 
 export default function AchievementsSection() {
   return (
-    <section className="relative w-full bg-bg-primary px-6 py-24 lg:px-10 lg:py-40">
+    <section className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16">
           <SectionLabel className="mb-4">By the numbers</SectionLabel>
