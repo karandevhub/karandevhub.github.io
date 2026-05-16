@@ -119,15 +119,6 @@
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
-  /* Hide native cursor on pointer devices */
-  @media (hover: hover) and (pointer: fine) {
-    body {
-      cursor: none;
-    }
-    a, button, [data-cursor] {
-      cursor: none;
-    }
-  }
 }
 
 @layer utilities {
@@ -212,17 +203,41 @@
   animation: shimmer 1.5s linear infinite;
 }
 
-/* ── GitHub Contribution Calendar: force full-width stretch ── */
-.github-calendar-wrapper {
+/* ── MDX & Shiki Code Blocks ── */
+[data-rehype-pretty-code-fragment] {
+  @apply my-8 overflow-hidden rounded-3xl border border-border-medium bg-[#050506] backdrop-blur-md;
+}
+
+[data-rehype-pretty-code-fragment] pre {
+  @apply m-0 overflow-x-auto p-6 text-[13px] leading-relaxed;
+  background-color: transparent !important;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full font-mono;
+}
+
+[data-rehype-pretty-code-title] {
+  @apply flex items-center px-6 py-3 font-mono text-[11px] uppercase tracking-widest text-text-muted border-b border-border-subtle bg-bg-tertiary/50;
+}
+
+.prose code:not([data-rehype-pretty-code-fragment] code) {
+  @apply rounded-md bg-accent/10 px-1.5 py-0.5 font-mono text-sm text-accent border border-accent/20;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-accent bg-bg-secondary/40 py-6 px-8 italic rounded-r-3xl;
+}
+
+.ambient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  overflow: hidden;
-}
-
-.github-calendar-wrapper > div {
-  width: 100% !important;
-}
-
-.github-calendar-wrapper svg {
-  width: 100% !important;
-  height: auto !important;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.03) 0%, transparent 40%);
 }

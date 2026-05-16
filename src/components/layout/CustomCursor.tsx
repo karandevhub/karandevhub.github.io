@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function CustomCursor() {
+  const pathname = usePathname();
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
@@ -14,11 +16,19 @@ export default function CustomCursor() {
   useEffect(() => {
     setMounted(true);
     if (typeof window === "undefined") return;
+
+    // Only enable custom cursor on the homepage
+    const isHome = pathname === "/";
     const isTouch = window.matchMedia("(hover: none)").matches;
-    if (isTouch) {
+
+    if (!isHome || isTouch) {
       setHidden(true);
+      document.body.style.cursor = "auto";
       return;
     }
+
+    setHidden(false);
+    document.body.style.cursor = "none";
 
     const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const ring = { x: mouse.x, y: mouse.y };
@@ -71,8 +81,9 @@ export default function CustomCursor() {
       window.removeEventListener("mouseup", onUp);
       window.removeEventListener("mouseover", onOver);
       cancelAnimationFrame(rafId);
+      document.body.style.cursor = "auto";
     };
-  }, []);
+  }, [pathname]);
 
   if (!mounted || hidden) return null;
 

@@ -1,0 +1,59 @@
+---
+title: "The Future of Web Development with Next.js and MDX"
+description: "Why static site generation paired with markdown components is the ultimate combination for developer portfolios."
+date: "2026-05-16"
+cover: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+tag: "Engineering"
+---
+
+# Welcome to the New Blog
+
+Building a portfolio is one thing, but making it **fast**, **SEO-friendly**, and **easy to maintain** is another. That's where Next.js and MDX come in.
+
+## Why MDX?
+
+MDX allows you to use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your document. This makes writing long-form content with interactive elements a breeze.
+
+> "MDX is an authorable format that lets you seamlessly write JSX in your Markdown documents."
+
+## Code Highlighting
+
+Syntax highlighting is built right in. Here's an example of how easy it is to fetch a post in Next.js:
+
+```tsx
+import { getAllPosts } from "@/lib/blog";
+
+export default async function BlogPage() {
+  const posts = getAllPosts();
+  
+  return (
+    <div>
+      {posts.map(post => (
+        <h2 key={post.slug}>{post.title}</h2>
+      ))}
+    </div>
+  );
+}
+```
+
+## The Power of Static Site Generation (SSG)
+
+Because this portfolio uses `output: 'export'`, every blog post you write is converted into a highly optimized, static HTML file. This means:
+- **Zero server latency**: Files are served from a CDN.
+- **Perfect SEO**: Google can instantly index the content.
+- **Maximum Security**: No database means no SQL injections.
+
+## Using Shadcn Components
+
+Since we are using MDX, we can use our Shadcn UI components directly in the markdown!
+
+<Alert className="my-8 bg-bg-tertiary border-accent/20">
+  <AlertTitle className="text-accent font-display font-semibold">Pro Tip</AlertTitle>
+  <AlertDescription className="text-text-secondary">
+    You can use any Shadcn component here. For example, here is a Badge: <Badge variant="secondary" className="bg-accent/10 text-accent border-accent/20 ml-2">Premium</Badge>
+  </AlertDescription>
+</Alert>
+
+## Wrapping Up
+
+This blog setup gives you the flexibility of a CMS with the performance of a static site. Happy writing!

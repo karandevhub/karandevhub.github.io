@@ -10,7 +10,10 @@ const TestimonialsSection = dynamic(() => import("@/components/sections/Testimon
 const BlogSection = dynamic(() => import("@/components/sections/BlogSection"));
 const ContactSection = dynamic(() => import("@/components/sections/ContactSection"));
 
-export default function Home() {
+export default async function Home() {
+  const { getAllPosts } = await import("@/lib/blog");
+  const posts = getAllPosts().slice(0, 3);
+
   return (
     <div className="relative">
       <HeroSection />
@@ -20,7 +23,7 @@ export default function Home() {
       <ProjectsSection />
       <OpenSourceSection />
       <TestimonialsSection />
-      <BlogSection />
+      <BlogSection posts={posts} />
       <ContactSection />
     </div>
   );
