@@ -47,7 +47,7 @@ const components = {
   h1: (props: any) => <h1 className="mt-8 mb-4 text-4xl font-display font-bold text-text-primary" {...props} />,
   h2: (props: any) => <h2 className="mt-12 mb-4 text-2xl font-display font-semibold text-text-primary" {...props} />,
   h3: (props: any) => <h3 className="mt-8 mb-4 text-xl font-display font-semibold text-text-primary" {...props} />,
-  p: (props: any) => <p className="mb-6 text-lg leading-relaxed text-text-secondary" {...props} />,
+  p: (props: any) => <div className="mb-6 text-lg leading-relaxed text-text-secondary" {...props} />,
   ul: (props: any) => <ul className="mb-6 list-disc pl-6 text-lg text-text-secondary marker:text-accent" {...props} />,
   ol: (props: any) => <ol className="mb-6 list-decimal pl-6 text-lg text-text-secondary marker:text-accent" {...props} />,
   li: (props: any) => <li className="mb-2" {...props} />,
