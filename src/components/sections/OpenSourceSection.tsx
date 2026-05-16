@@ -1,38 +1,17 @@
 "use client";
-import { Star, GitFork, Github } from "lucide-react";
+
+import { useEffect, useState, memo } from "react";
+import { Star, GitFork, Github, ExternalLink } from "lucide-react";
+import { ActivityCalendar } from "react-activity-calendar";
 import SectionLabel from "@/components/ui/SectionLabel";
 import GlassCard from "@/components/ui/GlassCard";
-import { useEffect, useState } from "react";
-import { ActivityCalendar } from "react-activity-calendar";
+import { GitHubRepo, ContributionDay } from "@/types/github";
 
-const REPOS = [
-  {
-    name: "craft-journey",
-    desc: "A premium portfolio experience built with React and Three.js.",
-    lang: "TypeScript",
-    color: "#3178c6",
-    stars: 1,
-    forks: 0,
-  },
-  {
-    name: "nextjs-saas-starter",
-    desc: "Full-stack SaaS boilerplate with authentication and payments.",
-    lang: "JavaScript",
-    color: "#f1e05a",
-    stars: 12,
-    forks: 4,
-  },
-  {
-    name: "ai-rag-chat",
-    desc: "Retrieval-Augmented Generation chat interface with LangChain.",
-    lang: "TypeScript",
-    color: "#3178c6",
-    stars: 8,
-    forks: 2,
-  },
-];
+// --- Constants & Config ---
+const REPOS_LIST = ["sgit", "rag-ai-chatbot", "genkitx-patientseek"];
+const USERNAME = "karandevhub";
 
-const githubTheme = {
+const CALENDAR_THEME = {
   light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
   dark: [
     "rgba(255, 255, 255, 0.04)",
@@ -43,147 +22,185 @@ const githubTheme = {
   ],
 };
 
+
+const RepoCard = memo(({ repo }: { repo: GitHubRepo }) => (
+  <a
+    href={repo.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group relative flex flex-col justify-between rounded-2xl border border-border-medium bg-bg-secondary p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_20px_40px_-15px_var(--accent-glow)]"
+  >
+    <div>
+      <div className="mb-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Github className="h-4 w-4 text-text-muted transition-colors group-hover:text-accent" />
+          <span className="font-mono text-sm font-medium text-text-primary">
+            {repo.name}
+          </span>
+        </div>
+        <ExternalLink className="h-3.5 w-3.5 text-text-muted opacity-0 transition-opacity group-hover:opacity-100" />
+      </div>
+      <p className="line-clamp-2 text-sm leading-relaxed text-text-secondary">
+        {repo.desc}
+      </p>
+    </div>
+
+    <div className="mt-6 flex items-center gap-4 text-[11px] font-medium uppercase tracking-wider text-text-muted">
+      {repo.lang && (
+        <span className="flex items-center gap-1.5">
+          <span
+            className="h-2 w-2 rounded-full"
+            style={{ background: repo.color }}
+          />
+          {repo.lang}
+        </span>
+      )}
+      <span className="flex items-center gap-1">
+        <Star className="h-3 w-3" /> {repo.stars.toLocaleString()}
+      </span>
+      <span className="flex items-center gap-1">
+        <GitFork className="h-3 w-3" /> {repo.forks}
+      </span>
+    </div>
+  </a>
+));
+
+RepoCard.displayName = "RepoCard";
+
+const RepoSkeleton = () => (
+  <div className="h-44 w-full animate-pulse rounded-2xl border border-border-subtle bg-white/[0.02]" />
+);
+
+
+const getLangColor = (lang: string) => {
+  const colors: Record<string, string> = {
+    TypeScript: "#3178c6",
+    JavaScript: "#f1e05a",
+    Rust: "#dea584",
+    Python: "#3572A5",
+    CSS: "#563d7c",
+    HTML: "#e34c26",
+    Go: "#00ADD8",
+  };
+  return colors[lang] || "#8b949e";
+};
+
+
 export default function OpenSourceSection() {
-  const [data, setData] = useState<any[]>([]);
+  const [contributions, setContributions] = useState<ContributionDay[]>([]);
+  const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
-  const username = "karandevhub";
 
   useEffect(() => {
     setMounted(true);
-    async function fetchCalendar() {
+    
+    async function fetchGitHubData() {
       try {
         setLoading(true);
-        const response = await fetch(
-          `https://github-contributions-api.jogruber.de/v4/${username}?y=last`
+        
+        // Execute all fetches in parallel for better performance
+        const [calendarRes, ...repoResponses] = await Promise.all([
+          fetch(`https://github-contributions-api.jogruber.de/v4/${USERNAME}?y=last`),
+          ...REPOS_LIST.map(repo => fetch(`https://api.github.com/repos/${USERNAME}/${repo}`))
+        ]);
+
+        // 1. Process Calendar Data
+        if (calendarRes.ok) {
+          const json = await calendarRes.json();
+          if (json.contributions && Array.isArray(json.contributions)) {
+            let data: ContributionDay[] = json.contributions;
+            
+            // Optional: Align to start of week for aesthetic consistency
+            const firstSunday = data.findIndex(d => new Date(d.date + "T00:00:00").getDay() === 0);
+            if (firstSunday > 0) data = data.slice(firstSunday);
+            
+            setContributions(data);
+          }
+        }
+
+        // 2. Process Repository Data
+        const fetchedRepos = await Promise.all(
+          repoResponses.map(async (res) => {
+            if (!res.ok) return null;
+            const json = await res.json();
+            return {
+              name: json.name,
+              desc: json.description,
+              lang: json.language,
+              stars: json.stargazers_count,
+              forks: json.forks_count,
+              url: json.html_url,
+              color: getLangColor(json.language)
+            } as GitHubRepo;
+          })
         );
-        if (!response.ok) throw new Error("Failed to fetch");
-        const json = await response.json();
+        
+        setRepos(fetchedRepos.filter((r): r is GitHubRepo => r !== null));
 
-        if (json.contributions && Array.isArray(json.contributions)) {
-          let contributions: any[] = json.contributions;
-          const firstSundayIdx = contributions.findIndex((d) => {
-            const day = new Date(d.date + "T00:00:00").getDay();
-            return day === 0;
-          });
-          if (firstSundayIdx > 0) {
-            contributions = contributions.slice(firstSundayIdx);
-          }
-          const hasNonZero = contributions.some((d) => d.count > 0);
-          if (!hasNonZero && contributions.length > 0) {
-            contributions[contributions.length - 1] = {
-              ...contributions[contributions.length - 1],
-              count: 1,
-              level: 1,
-            };
-          }
-
-          setData(contributions);
-        }
       } catch (err) {
-        console.error("GitHub fetch error:", err);
-        const fallback: any[] = [];
-        const today = new Date();
-        const dayOfWeek = today.getDay();
-        const start = new Date(today);
-        start.setDate(start.getDate() - 364 - dayOfWeek);
-        for (let i = 0; i < 365; i++) {
-          const date = new Date(start);
-          date.setDate(start.getDate() + i);
-          const count = Math.random() > 0.5 ? Math.floor(Math.random() * 10) : 0;
-          fallback.push({
-            date: date.toISOString().split("T")[0],
-            count,
-            level: count === 0 ? 0 : count < 3 ? 1 : count < 6 ? 2 : count < 9 ? 3 : 4,
-          });
-        }
-        fallback[fallback.length - 1].count = 5;
-        fallback[fallback.length - 1].level = 2;
-        setData(fallback);
+        console.error("GitHub data synchronization failed:", err);
       } finally {
         setLoading(false);
       }
     }
-    fetchCalendar();
-  }, [username]);
+
+    fetchGitHubData();
+  }, []);
 
   return (
     <section className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-7xl">
+        {/* Section Header */}
         <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <SectionLabel className="mb-4">In the open</SectionLabel>
+          <div className="space-y-4">
+            <SectionLabel>In the open</SectionLabel>
             <h2 className="text-display font-display font-semibold text-text-primary">
               Building in public.
             </h2>
           </div>
+          
           <a
-            href={`https://github.com/${username}`}
+            href={`https://github.com/${USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-text-primary"
+            className="group flex items-center gap-3 rounded-full border border-border-medium bg-bg-secondary px-5 py-2.5 text-sm font-medium text-text-secondary transition-all hover:border-accent hover:text-text-primary"
           >
             <Github className="h-4 w-4" />
-            @{username}
+            <span>@{USERNAME}</span>
+            <ExternalLink className="h-3.5 w-3.5 opacity-50 group-hover:opacity-100" />
           </a>
         </div>
 
-        <GlassCard className="mb-12 w-full">
-          <div className="w-full py-2">
-            <div className="github-calendar-wrapper">
+        {/* Contribution Activity */}
+        <GlassCard className="mb-12 w-full border-border-medium/50 overflow-hidden">
+          <div className="w-full py-4 overflow-x-auto">
+            <div className="min-w-[800px] px-2">
               {mounted ? (
                 <ActivityCalendar
-                  data={data}
-                  theme={githubTheme}
+                  data={contributions}
+                  theme={CALENDAR_THEME}
                   colorScheme="dark"
                   fontSize={12}
-                  blockSize={13}
-                  blockMargin={3}
+                  blockSize={12}
+                  blockMargin={4}
                   loading={loading}
                   labels={{
                     totalCount: "{{count}} contributions in the last year",
                   }}
                 />
               ) : (
-                <div className="h-[150px] w-full animate-pulse rounded-lg bg-white/5" />
+                <div className="h-[140px] w-full animate-pulse rounded-lg bg-white/[0.03]" />
               )}
             </div>
           </div>
         </GlassCard>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {REPOS.map((r) => (
-            <a
-              key={r.name}
-              href={`https://github.com/${username}/${r.name}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block rounded-2xl border border-border-medium bg-bg-secondary p-4 sm:p-6 transition-all hover:-translate-y-1 hover:border-accent hover:shadow-[0_20px_60px_-20px_var(--accent-glow)]"
-            >
-              <div className="mb-2 flex items-center gap-2">
-                <Github className="h-4 w-4 text-text-muted" />
-                <span className="font-mono text-sm text-text-primary group-hover:underline">
-                  {r.name}
-                </span>
-              </div>
-              <p className="text-sm text-text-secondary">{r.desc}</p>
-              <div className="mt-5 flex items-center gap-4 text-xs text-text-muted">
-                <span className="flex items-center gap-1.5">
-                  <span
-                    className="h-2.5 w-2.5 rounded-full"
-                    style={{ background: r.color }}
-                  />
-                  {r.lang}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Star className="h-3 w-3" /> {r.stars.toLocaleString()}
-                </span>
-                <span className="flex items-center gap-1">
-                  <GitFork className="h-3 w-3" /> {r.forks}
-                </span>
-              </div>
-            </a>
-          ))}
+        {/* Repositories Grid */}
+        <div className="grid gap-5 md:grid-cols-3">
+          {loading && repos.length === 0
+            ? Array.from({ length: 3 }).map((_, i) => <RepoSkeleton key={i} />)
+            : repos.map((repo) => <RepoCard key={repo.name} repo={repo} />)}
         </div>
       </div>
     </section>
