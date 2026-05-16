@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Clock } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/button";
+import BlogViewCounter from "@/components/ui/BlogViewCounter";
 
 import Link from "next/link";
 
@@ -96,6 +97,7 @@ export default function BlogSection({ isPage = false, posts = [] }: BlogSectionP
                     <Clock className="h-3 w-3" />
                     {p.read} min
                   </span>
+                  <BlogViewCounter slug={p.slug} readonly={true} />
                 </div>
               </div>
               </Link>
