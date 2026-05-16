@@ -4,6 +4,8 @@ import { SEO } from '@/constants';
 
 const URL = SEO.url.replace(/\/$/, '');
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
 
