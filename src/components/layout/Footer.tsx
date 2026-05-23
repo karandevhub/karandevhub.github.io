@@ -1,4 +1,5 @@
 import { IDENTITY, CONTACT, NAVIGATION } from "@/constants";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -18,9 +19,9 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-text-secondary">
               {NAVIGATION.links.map((l) => (
                 <li key={l.id}>
-                  <a href={l.href} className="hover:text-text-primary">
+                  <Link href={l.href} className="hover:text-text-primary">
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

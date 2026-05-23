@@ -49,12 +49,14 @@ export default function Navbar() {
 
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((l) => {
-            const isActive = pathname === l.href;
+            const isHash = l.href.startsWith("#");
+            const href = isHash && pathname !== "/" ? `/${l.href}` : l.href;
+            const isActive = pathname === href;
             return (
               <li key={l.id}>
-                {l.href.startsWith("/") ? (
+                {href.startsWith("/") ? (
                   <Link
-                    href={l.href}
+                    href={href}
                     className={cn(
                       "rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors hover:text-text-primary",
                       isActive ? "text-accent" : "text-text-secondary"
@@ -64,7 +66,7 @@ export default function Navbar() {
                   </Link>
                 ) : (
                   <a
-                    href={l.href}
+                    href={href}
                     className="rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary transition-colors hover:text-text-primary"
                   >
                     {l.label}
@@ -77,10 +79,17 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <Button asChild variant="outline" className="h-9 rounded-full border-border-medium bg-bg-secondary/60 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-primary transition-all hover:border-accent hover:bg-accent-glow">
-            <a href="#contact">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot mr-2" />
-              Hire me
-            </a>
+            {pathname !== "/" ? (
+              <Link href="/#contact">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot mr-2" />
+                Hire me
+              </Link>
+            ) : (
+              <a href="#contact">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot mr-2" />
+                Hire me
+              </a>
+            )}
           </Button>
           
           <Button
@@ -123,7 +132,9 @@ export default function Navbar() {
             <nav className="flex h-[calc(100vh-64px)] flex-col justify-center px-8">
               <ul className="flex flex-col gap-8">
                 {navLinks.map((l, i) => {
-                  const isActive = pathname === l.href;
+                  const isHash = l.href.startsWith("#");
+                  const href = isHash && pathname !== "/" ? `/${l.href}` : l.href;
+                  const isActive = pathname === href;
                   return (
                     <motion.li
                       key={l.id}
@@ -131,9 +142,9 @@ export default function Navbar() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
                     >
-                      {l.href.startsWith("/") ? (
+                      {href.startsWith("/") ? (
                         <Link
-                          href={l.href}
+                          href={href}
                           onClick={() => setMobileMenuOpen(false)}
                           className={cn(
                             "block font-display text-5xl font-semibold transition-colors hover:text-accent active:text-accent",
@@ -144,7 +155,7 @@ export default function Navbar() {
                         </Link>
                       ) : (
                         <a
-                          href={l.href}
+                          href={href}
                           onClick={() => setMobileMenuOpen(false)}
                           className="block font-display text-5xl font-semibold text-text-primary transition-colors hover:text-accent active:text-accent"
                         >

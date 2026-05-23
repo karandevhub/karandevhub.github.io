@@ -10,6 +10,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import { SEO } from "@/constants";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
+import BlogViewCounter from "@/components/ui/BlogViewCounter";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -130,6 +131,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <Clock className="h-3.5 w-3.5" />
                 {post.read} min read
               </span>
+              <BlogViewCounter slug={resolvedParams.slug} />
             </div>
             
             <h1 className="text-display font-display text-4xl font-bold leading-tight text-text-primary md:text-5xl lg:text-6xl mb-6">

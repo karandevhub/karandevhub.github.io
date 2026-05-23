@@ -7,14 +7,15 @@ export const IDENTITY = {
     "Full Stack Developer",
     "AI & ML Enthusiast",
   ],
-  bio: "I build intelligent systems and immersive interfaces that bridge the gap between AI and reality. Turning complex problems into elegant solutions.",
+  bio: "I build scalable, high-performance applications and intelligent systems using modern frameworks and AI-powered technologies. Bridging the gap between complex logic and seamless user experiences.",
   available: true,
-  location: "Noida, India 🇮🇳",
-  currentWork: "Full Stack & AI Engineer @ Building cool stuff",
+  location: "Jharkhand, India 🇮🇳",
+  currentWork: "Application Developer @ Lawazia Tech Pvt. Ltd.",
 };
 
 export const CONTACT = {
   email: "karanmahatocse@gmail.com",
+  phone: "+91 7079648675",
   resumeUrl: "#",
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/itskaran/", icon: Linkedin },
@@ -28,19 +29,19 @@ export const CONTACT = {
 
 export const NAVIGATION = {
   links: [
-    { id: "about", label: "About", href: "#about" },
-    { id: "skills", label: "Skills", href: "#skills" },
-    { id: "experience", label: "Experience", href: "#experience" },
-    { id: "work", label: "Work", href: "#work" },
-    { id: "contact", label: "Contact", href: "#contact" },
+    { id: "about", label: "About", href: "/#about" },
+    { id: "skills", label: "Skills", href: "/#skills" },
+    { id: "experience", label: "Experience", href: "/#experience" },
+    { id: "work", label: "Work", href: "/#work" },
+    { id: "contact", label: "Contact", href: "/#contact" },
   ],
 };
 
 export const ABOUT = {
   paragraphs: [
-    "I'm a Full Stack & AI Engineer who lives at the intersection of complex logic and intuitive design.",
-    "I specialize in building intelligent applications that don't just function—they anticipate. My work ranges from deep neural network integrations to high-performance web ecosystems.",
-    "I believe the best technology is invisible, seamlessly empowering users to achieve more. When I'm not coding, I'm likely exploring the next frontier of AI or contributing to the open-source community.",
+    "I'm a Computer Science student at Dumka Engineering College specializing in Full-Stack Web and Mobile Development.",
+    "Experienced in building scalable, high-performance applications using modern frameworks and AI-powered technologies like LangChain and GenKit to deliver seamless, production-ready user experiences across platforms.",
+    "My work spans from building RAG-based LLM systems to high-performance geospatial dashboards and cross-platform mobile apps.",
   ],
   values: [
     {
@@ -50,8 +51,8 @@ export const ABOUT = {
     },
     {
       icon: Wrench,
-      label: "Build for the team behind you",
-      desc: "Code that reads well outlives code that runs fast. I optimize for the next person.",
+      label: "Build for the team",
+      desc: "Code that reads well outlives code that runs fast. I optimize for maintainability.",
     },
     {
       icon: Compass,
