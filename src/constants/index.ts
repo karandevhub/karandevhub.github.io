@@ -12,11 +12,7 @@ import {
 export const IDENTITY = {
   name: "Karan Kumar Mahato",
   title: "Full Stack & AI Engineer",
-  roles: [
-    "Full Stack Developer",
-    "AI & ML Specialist",
-    "Mobile App Developer",
-  ],
+  roles: ["Full Stack Developer", "AI & ML Specialist", "Mobile App Developer"],
   bio: "I build scalable, high-performance applications and intelligent systems using modern frameworks and AI-powered technologies. Bridging the gap between complex logic and seamless user experiences.",
   available: true,
   location: "Jharkhand, India 🇮🇳",
