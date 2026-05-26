@@ -7,10 +7,7 @@ import { ABOUT } from "@/constants";
 
 export default function AboutSection() {
   return (
-    <section
-      id="about"
-      className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20"
-    >
+    <section id="about" className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20">
       <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.85fr_1.15fr]">
         <ScrollReveal>
           <div className="relative aspect-[4/5] w-full max-w-md">
@@ -20,8 +17,7 @@ export default function AboutSection() {
                 backgroundImage: `url(/profile-image.webp)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                boxShadow:
-                  "inset 0 0 60px rgba(0,0,0,0.5), 0 30px 60px -20px rgba(0,0,0,0.6)",
+                boxShadow: "inset 0 0 60px rgba(0,0,0,0.5), 0 30px 60px -20px rgba(0,0,0,0.6)",
               }}
             />
             <div

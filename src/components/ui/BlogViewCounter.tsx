@@ -15,7 +15,7 @@ export default function BlogViewCounter({ slug, readonly = false }: BlogViewCoun
       try {
         const response = await fetch(
           `https://blog-views-api.karan-portfolio.workers.dev/views/${slug}`,
-          { method: readonly ? "GET" : "POST" }
+          { method: readonly ? "GET" : "POST" },
         );
         const data = await response.json();
         if (data.views !== undefined) {

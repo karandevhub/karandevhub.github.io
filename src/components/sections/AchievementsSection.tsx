@@ -60,8 +60,7 @@ export default function AchievementsSection() {
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {achievements.map((a, i) => {
             const Icon =
-              (Icons as unknown as Record<string, Icons.LucideIcon>)[a.icon] ||
-              Icons.Award;
+              (Icons as unknown as Record<string, Icons.LucideIcon>)[a.icon] || Icons.Award;
             return (
               <motion.div
                 key={a.label}

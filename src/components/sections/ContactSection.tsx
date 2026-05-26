@@ -27,8 +27,7 @@ export default function ContactSection() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background:
-            "radial-gradient(ellipse at center, var(--accent-glow), transparent 60%)",
+          background: "radial-gradient(ellipse at center, var(--accent-glow), transparent 60%)",
           opacity: 0.4,
         }}
       />
@@ -41,11 +40,9 @@ export default function ContactSection() {
           <span style={{ color: "var(--accent)" }}>remarkable.</span>
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg">
-          I'm picky about who I work with — and so are the best clients. If
-          you're shipping something that deserves real care, say hello.
+          I'm picky about who I work with — and so are the best clients. If you're shipping
+          something that deserves real care, say hello.
         </p>
-
-
 
         <div className="mt-10 flex justify-center gap-3">
           {CONTACT.socials.map((s) => {
@@ -71,14 +68,15 @@ export default function ContactSection() {
           })}
         </div>
 
-
         <form
           onSubmit={submit}
           className="glass mx-auto mt-16 grid max-w-2xl gap-4 rounded-3xl p-4 sm:p-6 text-left md:p-8"
         >
           <div className="grid gap-4 md:grid-cols-2">
             <div className="grid gap-2">
-              <Label htmlFor="name" className="text-eyebrow">Name</Label>
+              <Label htmlFor="name" className="text-eyebrow">
+                Name
+              </Label>
               <Input
                 id="name"
                 name="name"
@@ -88,7 +86,9 @@ export default function ContactSection() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="email" className="text-eyebrow">Email</Label>
+              <Label htmlFor="email" className="text-eyebrow">
+                Email
+              </Label>
               <Input
                 id="email"
                 name="email"
@@ -100,7 +100,9 @@ export default function ContactSection() {
             </div>
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="message" className="text-eyebrow">Message</Label>
+            <Label htmlFor="message" className="text-eyebrow">
+              Message
+            </Label>
             <Textarea
               id="message"
               name="message"
@@ -111,13 +113,8 @@ export default function ContactSection() {
             />
           </div>
           <div className="flex items-center justify-between mt-2">
-            <span className="font-mono text-xs text-text-muted">
-              Replies within 48h.
-            </span>
-            <Button
-              type="submit"
-              className="rounded-full px-6 py-5 text-sm"
-            >
+            <span className="font-mono text-xs text-text-muted">Replies within 48h.</span>
+            <Button type="submit" className="rounded-full px-6 py-5 text-sm">
               {submitted ? "Sent ✓" : "Send message"}
             </Button>
           </div>

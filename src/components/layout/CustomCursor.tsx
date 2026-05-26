@@ -8,9 +8,7 @@ export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
-  const [mode, setMode] = useState<"default" | "hover" | "project" | "click">(
-    "default"
-  );
+  const [mode, setMode] = useState<"default" | "hover" | "project" | "click">("default");
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
@@ -87,10 +85,8 @@ export default function CustomCursor() {
 
   if (!mounted || hidden) return null;
 
-  const ringSize =
-    mode === "project" ? 72 : mode === "hover" ? 48 : mode === "click" ? 20 : 32;
-  const ringBg =
-    mode === "hover" || mode === "project" ? "var(--accent-glow)" : "transparent";
+  const ringSize = mode === "project" ? 72 : mode === "hover" ? 48 : mode === "click" ? 20 : 32;
+  const ringBg = mode === "hover" || mode === "project" ? "var(--accent-glow)" : "transparent";
   const ringBorder =
     mode === "hover" || mode === "project"
       ? "1px solid var(--accent)"

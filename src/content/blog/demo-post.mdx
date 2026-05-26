@@ -25,10 +25,10 @@ import { getAllPosts } from "@/lib/blog";
 
 export default async function BlogPage() {
   const posts = getAllPosts();
-  
+
   return (
     <div>
-      {posts.map(post => (
+      {posts.map((post) => (
         <h2 key={post.slug}>{post.title}</h2>
       ))}
     </div>
@@ -39,6 +39,7 @@ export default async function BlogPage() {
 ## The Power of Static Site Generation (SSG)
 
 Because this portfolio uses `output: 'export'`, every blog post you write is converted into a highly optimized, static HTML file. This means:
+
 - **Zero server latency**: Files are served from a CDN.
 - **Perfect SEO**: Google can instantly index the content.
 - **Maximum Security**: No database means no SQL injections.
@@ -50,7 +51,10 @@ Since we are using MDX, we can use our Shadcn UI components directly in the mark
 <Alert className="my-8 bg-bg-tertiary border-accent/20">
   <AlertTitle className="text-accent font-display font-semibold">Pro Tip</AlertTitle>
   <AlertDescription className="text-text-secondary">
-    You can use any Shadcn component here. For example, here is a Badge: <Badge variant="secondary" className="bg-accent/10 text-accent border-accent/20 ml-2">Premium</Badge>
+    You can use any Shadcn component here. For example, here is a Badge:{" "}
+    <Badge variant="secondary" className="bg-accent/10 text-accent border-accent/20 ml-2">
+      Premium
+    </Badge>
   </AlertDescription>
 </Alert>
 

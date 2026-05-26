@@ -24,9 +24,11 @@ interface BlogSectionProps {
 
 export default function BlogSection({ isPage = false, posts = [] }: BlogSectionProps) {
   return (
-    <section className={`relative w-full bg-bg-primary px-6 lg:px-10 ${
-      isPage ? "pt-12 pb-24 lg:pt-20 lg:pb-40" : "py-12 lg:py-20"
-    }`}>
+    <section
+      className={`relative w-full bg-bg-primary px-6 lg:px-10 ${
+        isPage ? "pt-12 pb-24 lg:pt-20 lg:pb-40" : "py-12 lg:py-20"
+      }`}
+    >
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
@@ -36,7 +38,11 @@ export default function BlogSection({ isPage = false, posts = [] }: BlogSectionP
             </h2>
           </div>
           {!isPage && (
-            <Button asChild variant="ghost" className="inline-flex items-center gap-2 text-sm font-medium text-text-primary">
+            <Button
+              asChild
+              variant="ghost"
+              className="inline-flex items-center gap-2 text-sm font-medium text-text-primary"
+            >
               <Link href="/blog">
                 Read all articles
                 <ArrowUpRight className="ml-2 h-4 w-4" />
@@ -47,9 +53,7 @@ export default function BlogSection({ isPage = false, posts = [] }: BlogSectionP
 
         <div className="grid gap-6 md:grid-cols-3">
           {posts.length === 0 && (
-            <div className="col-span-3 text-center text-text-secondary py-12">
-              No posts found.
-            </div>
+            <div className="col-span-3 text-center text-text-secondary py-12">No posts found.</div>
           )}
           {posts.map((p, i) => (
             <motion.div
@@ -63,43 +67,41 @@ export default function BlogSection({ isPage = false, posts = [] }: BlogSectionP
                 href={`/blog/${p.slug}`}
                 className="group block h-full overflow-hidden rounded-2xl border border-border-medium bg-bg-secondary transition-all hover:-translate-y-1 hover:border-accent"
               >
-              <div className="relative aspect-[16/10] w-full overflow-hidden">
-                <div
-                  className="absolute inset-0 transition-transform duration-700 group-hover:scale-[1.06]"
-                  style={{
-                    backgroundImage: `url(${p.cover})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent" />
-                <span
-                  className="absolute left-4 top-4 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-widest"
-                  style={{
-                    background: "var(--accent-glow)",
-                    color: "var(--accent)",
-                    border: "1px solid var(--accent-border)",
-                  }}
-                >
-                  {p.tag}
-                </span>
-              </div>
-              <div className="p-6">
-                <h3 className="font-display text-lg font-semibold leading-tight text-text-primary group-hover:text-accent">
-                  {p.title}
-                </h3>
-                <p className="mt-2 line-clamp-2 text-sm text-text-secondary">
-                  {p.excerpt}
-                </p>
-                <div className="mt-5 flex items-center justify-between font-mono text-[11px] text-text-muted">
-                  <span>{p.date}</span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="h-3 w-3" />
-                    {p.read} min
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <div
+                    className="absolute inset-0 transition-transform duration-700 group-hover:scale-[1.06]"
+                    style={{
+                      backgroundImage: `url(${p.cover})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent" />
+                  <span
+                    className="absolute left-4 top-4 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-widest"
+                    style={{
+                      background: "var(--accent-glow)",
+                      color: "var(--accent)",
+                      border: "1px solid var(--accent-border)",
+                    }}
+                  >
+                    {p.tag}
                   </span>
-                  <BlogViewCounter slug={p.slug} readonly={true} />
                 </div>
-              </div>
+                <div className="p-6">
+                  <h3 className="font-display text-lg font-semibold leading-tight text-text-primary group-hover:text-accent">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-sm text-text-secondary">{p.excerpt}</p>
+                  <div className="mt-5 flex items-center justify-between font-mono text-[11px] text-text-muted">
+                    <span>{p.date}</span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      {p.read} min
+                    </span>
+                    <BlogViewCounter slug={p.slug} readonly={true} />
+                  </div>
+                </div>
               </Link>
             </motion.div>
           ))}

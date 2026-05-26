@@ -8,7 +8,7 @@ export default function ReadingProgress() {
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   const [isVisible, setIsVisible] = useState(false);
@@ -31,9 +31,9 @@ export default function ReadingProgress() {
   return (
     <motion.div
       className="fixed top-0 left-0 right-0 h-1 z-50 origin-left"
-      style={{ 
+      style={{
         scaleX,
-        background: "linear-gradient(to right, var(--accent), var(--accent-glow))"
+        background: "linear-gradient(to right, var(--accent), var(--accent-glow))",
       }}
     />
   );

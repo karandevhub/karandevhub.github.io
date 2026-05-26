@@ -36,9 +36,7 @@ export default function RevealText({
         ease: "expo.out",
         duration: 1.1,
         stagger,
-        scrollTrigger: trigger
-          ? { trigger: ref.current, start: "top 85%" }
-          : undefined,
+        scrollTrigger: trigger ? { trigger: ref.current, start: "top 85%" } : undefined,
       });
     }, ref);
     return () => ctx.revert();

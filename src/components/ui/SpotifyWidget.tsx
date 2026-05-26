@@ -70,13 +70,13 @@ export default function SpotifyWidget() {
       </span>
 
       <div className="flex flex-col min-w-0 overflow-hidden">
-        <span 
+        <span
           className="font-mono text-[9px] uppercase tracking-widest leading-none mb-1 text-[#1DB954]"
           style={{ textShadow: "0 0 8px rgba(29, 185, 84, 0.4)" }}
         >
           {track.isPlaying ? "Currently playing" : "Last played"}
         </span>
-        
+
         <div className="relative flex flex-col min-w-0">
           <div className="flex items-center gap-4 whitespace-nowrap">
             <div className="flex flex-col min-w-0">

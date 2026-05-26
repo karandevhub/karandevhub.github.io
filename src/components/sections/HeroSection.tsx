@@ -30,20 +30,13 @@ export default function HeroSection() {
         duration: 1.4,
         stagger: 0.04,
       });
-      tl.to(
-        "[data-hero-fade]",
-        { autoAlpha: 1, y: 0, duration: 1, stagger: 0.12 },
-        "-=0.8"
-      );
+      tl.to("[data-hero-fade]", { autoAlpha: 1, y: 0, duration: 1, stagger: 0.12 }, "-=0.8");
     }, root);
     return () => ctx.revert();
   }, []);
 
   useEffect(() => {
-    const i = setInterval(
-      () => setRoleIdx((r) => (r + 1) % IDENTITY.roles.length),
-      2400
-    );
+    const i = setInterval(() => setRoleIdx((r) => (r + 1) % IDENTITY.roles.length), 2400);
     return () => clearInterval(i);
   }, []);
 
@@ -75,7 +68,6 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-7xl py-8 sm:py-12 md:py-16">
-
         {/* ── "Hey 👋 I am Karan." headline ── */}
         <div data-hero-fade className="mb-4 sm:mb-4">
           <span className="font-display text-lg sm:text-xl font-medium text-text-primary">
@@ -155,7 +147,11 @@ export default function HeroSection() {
           ))}
 
           {/* Resume pill */}
-          <Button asChild variant="outline" className="h-10 rounded-full border-border-medium bg-bg-secondary/60 px-5 py-2 text-sm font-medium text-text-primary opacity-80 transition-all duration-200 hover:border-accent hover:bg-accent-glow hover:text-accent hover:opacity-100">
+          <Button
+            asChild
+            variant="outline"
+            className="h-10 rounded-full border-border-medium bg-bg-secondary/60 px-5 py-2 text-sm font-medium text-text-primary opacity-80 transition-all duration-200 hover:border-accent hover:bg-accent-glow hover:text-accent hover:opacity-100"
+          >
             <a href={CONTACT.resumeUrl}>
               <Download className="h-4 w-4 mr-2" />
               Resume
@@ -188,7 +184,6 @@ export default function HeroSection() {
             <div>IST</div>
           </div>
         </div>
-
       </div>
 
       {/* ── Scroll indicator ── */}

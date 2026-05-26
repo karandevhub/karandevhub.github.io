@@ -1,12 +1,11 @@
-
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @source ".";
 
 @font-face {
-  font-family: 'LogoFont';
-  src: url('/fonts/logo-font.ttf') format('truetype');
+  font-family: "LogoFont";
+  src: url("/fonts/logo-font.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -115,7 +114,12 @@
     background: var(--accent-glow);
     color: var(--text-primary);
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
@@ -146,11 +150,7 @@
     color: var(--text-secondary);
   }
   .glass {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.04),
-      rgba(255, 255, 255, 0.015)
-    );
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--border-medium);
@@ -174,18 +174,28 @@
   }
 }
 
-
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.9); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
 }
 .pulse-dot {
   animation: pulse-dot 1.6s var(--ease-in-out) infinite;
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 .shimmer-text:hover {
   background: linear-gradient(
@@ -237,7 +247,7 @@
   height: 100%;
   pointer-events: none;
   z-index: -1;
-  background: 
+  background:
     radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.05) 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.03) 0%, transparent 40%);
 }

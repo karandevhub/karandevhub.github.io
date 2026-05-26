@@ -16,7 +16,6 @@ export interface BlogPost {
   content: string;
 }
 
-
 export function getPostBySlug(slug: string): BlogPost | null {
   try {
     const realSlug = slug.replace(/\.mdx$/, "");
@@ -40,17 +39,16 @@ export function getPostBySlug(slug: string): BlogPost | null {
   }
 }
 
-
 export function getAllPosts(): BlogPost[] {
   if (!fs.existsSync(contentDir)) {
     return [];
   }
-  
+
   const slugs = fs.readdirSync(contentDir).filter((file) => file.endsWith(".mdx"));
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     .filter((post): post is BlogPost => post !== null)
     .sort((post1, post2) => (new Date(post1.date) > new Date(post2.date) ? -1 : 1));
-  
+
   return posts;
 }

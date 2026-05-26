@@ -22,7 +22,6 @@ const CALENDAR_THEME = {
   ],
 };
 
-
 const RepoCard = memo(({ repo }: { repo: GitHubRepo }) => (
   <a
     href={repo.url}
@@ -34,24 +33,17 @@ const RepoCard = memo(({ repo }: { repo: GitHubRepo }) => (
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Github className="h-4 w-4 text-text-muted transition-colors group-hover:text-accent" />
-          <span className="font-mono text-sm font-medium text-text-primary">
-            {repo.name}
-          </span>
+          <span className="font-mono text-sm font-medium text-text-primary">{repo.name}</span>
         </div>
         <ExternalLink className="h-3.5 w-3.5 text-text-muted opacity-0 transition-opacity group-hover:opacity-100" />
       </div>
-      <p className="line-clamp-2 text-sm leading-relaxed text-text-secondary">
-        {repo.desc}
-      </p>
+      <p className="line-clamp-2 text-sm leading-relaxed text-text-secondary">{repo.desc}</p>
     </div>
 
     <div className="mt-6 flex items-center gap-4 text-[11px] font-medium uppercase tracking-wider text-text-muted">
       {repo.lang && (
         <span className="flex items-center gap-1.5">
-          <span
-            className="h-2 w-2 rounded-full"
-            style={{ background: repo.color }}
-          />
+          <span className="h-2 w-2 rounded-full" style={{ background: repo.color }} />
           {repo.lang}
         </span>
       )}
@@ -71,7 +63,6 @@ const RepoSkeleton = () => (
   <div className="h-44 w-full animate-pulse rounded-2xl border border-border-subtle bg-white/[0.02]" />
 );
 
-
 const getLangColor = (lang: string) => {
   const colors: Record<string, string> = {
     TypeScript: "#3178c6",
@@ -85,7 +76,6 @@ const getLangColor = (lang: string) => {
   return colors[lang] || "#8b949e";
 };
 
-
 export default function OpenSourceSection() {
   const [contributions, setContributions] = useState<ContributionDay[]>([]);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
@@ -94,15 +84,15 @@ export default function OpenSourceSection() {
 
   useEffect(() => {
     setMounted(true);
-    
+
     async function fetchGitHubData() {
       try {
         setLoading(true);
-        
+
         // Execute all fetches in parallel for better performance
         const [calendarRes, ...repoResponses] = await Promise.all([
           fetch(`https://github-contributions-api.jogruber.de/v4/${USERNAME}?y=last`),
-          ...REPOS_LIST.map(repo => fetch(`https://api.github.com/repos/${USERNAME}/${repo}`))
+          ...REPOS_LIST.map((repo) => fetch(`https://api.github.com/repos/${USERNAME}/${repo}`)),
         ]);
 
         // 1. Process Calendar Data
@@ -110,11 +100,13 @@ export default function OpenSourceSection() {
           const json = await calendarRes.json();
           if (json.contributions && Array.isArray(json.contributions)) {
             let data: ContributionDay[] = json.contributions;
-            
+
             // Optional: Align to start of week for aesthetic consistency
-            const firstSunday = data.findIndex(d => new Date(d.date + "T00:00:00").getDay() === 0);
+            const firstSunday = data.findIndex(
+              (d) => new Date(d.date + "T00:00:00").getDay() === 0,
+            );
             if (firstSunday > 0) data = data.slice(firstSunday);
-            
+
             setContributions(data);
           }
         }
@@ -131,13 +123,12 @@ export default function OpenSourceSection() {
               stars: json.stargazers_count,
               forks: json.forks_count,
               url: json.html_url,
-              color: getLangColor(json.language)
+              color: getLangColor(json.language),
             } as GitHubRepo;
-          })
+          }),
         );
-        
-        setRepos(fetchedRepos.filter((r): r is GitHubRepo => r !== null));
 
+        setRepos(fetchedRepos.filter((r): r is GitHubRepo => r !== null));
       } catch (err) {
         console.error("GitHub data synchronization failed:", err);
       } finally {
@@ -159,7 +150,7 @@ export default function OpenSourceSection() {
               Building in public.
             </h2>
           </div>
-          
+
           <a
             href={`https://github.com/${USERNAME}`}
             target="_blank"

@@ -13,7 +13,7 @@ export default {
     try {
       const response = await fetch(LASTFM_ENDPOINT);
       const data = await response.json();
-      
+
       const track = data.recenttracks.track[0];
       const isPlaying = track["@attr"]?.nowplaying === "true";
 
@@ -24,12 +24,14 @@ export default {
           artist: track.artist["#text"],
           albumArt: track.image[3]["#text"] || track.image[2]["#text"],
           songUrl: `https://open.spotify.com/search/${encodeURIComponent(track.name + " " + track.artist["#text"])}`,
-          debug: "Last.fm Mode Active!"
+          debug: "Last.fm Mode Active!",
         }),
-        { headers: corsHeaders }
+        { headers: corsHeaders },
       );
     } catch (e) {
-      return new Response(JSON.stringify({ isPlaying: false, error: e.message }), { headers: corsHeaders });
+      return new Response(JSON.stringify({ isPlaying: false, error: e.message }), {
+        headers: corsHeaders,
+      });
     }
   },
 };

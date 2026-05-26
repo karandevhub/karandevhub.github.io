@@ -17,8 +17,6 @@ export default function ParticleField() {
 
   const COUNT = 4000;
 
-
-
   const posArray = useRef<Float32Array | null>(null);
   if (!posArray.current) {
     const arr = new Float32Array(COUNT * 3);
@@ -44,10 +42,7 @@ export default function ParticleField() {
   return (
     <points ref={points}>
       <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          args={[posArray.current!, 3]}
-        />
+        <bufferAttribute attach="attributes-position" args={[posArray.current!, 3]} />
       </bufferGeometry>
       <pointsMaterial
         size={0.018}

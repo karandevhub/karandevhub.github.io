@@ -7,8 +7,6 @@ import { skills, getLogoUrl } from "@/data/skills";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
-
-
 function SpotlightCard({ children, className }: { children: React.ReactNode; className?: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(-999);
@@ -47,14 +45,9 @@ function SpotlightCard({ children, className }: { children: React.ReactNode; cla
   );
 }
 
-
-
 export default function SkillsSection() {
   return (
-    <section
-      id="skills"
-      className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20"
-    >
+    <section id="skills" className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
@@ -70,30 +63,34 @@ export default function SkillsSection() {
 
         <div className="grid auto-rows-[minmax(180px,auto)] grid-cols-1 gap-4 md:grid-cols-12">
           {skills.map((cat, idx) => {
-            const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[
-              cat.icon
-            ] || Icons.Sparkles;
+            const Icon =
+              (Icons as unknown as Record<string, Icons.LucideIcon>)[cat.icon] || Icons.Sparkles;
             const span =
-              cat.category === "Programming Languages" ? "md:col-span-4" :
-              cat.category === "Frontend Development" ? "md:col-span-5" :
-              cat.category === "AI & ML Tools" ? "md:col-span-3" :
-              cat.category === "Backend & Database" ? "md:col-span-8" :
-              "md:col-span-4";
+              cat.category === "Programming Languages"
+                ? "md:col-span-4"
+                : cat.category === "Frontend Development"
+                  ? "md:col-span-5"
+                  : cat.category === "AI & ML Tools"
+                    ? "md:col-span-3"
+                    : cat.category === "Backend & Database"
+                      ? "md:col-span-8"
+                      : "md:col-span-4";
 
-            const gridCols = 
-              cat.category === "Backend & Database" ? "grid-cols-4 md:grid-cols-8" :
-              cat.category === "Frontend Development" ? "grid-cols-4 md:grid-cols-5" :
-              cat.category === "AI & ML Tools" ? "grid-cols-3" :
-              "grid-cols-4";
+            const gridCols =
+              cat.category === "Backend & Database"
+                ? "grid-cols-4 md:grid-cols-8"
+                : cat.category === "Frontend Development"
+                  ? "grid-cols-4 md:grid-cols-5"
+                  : cat.category === "AI & ML Tools"
+                    ? "grid-cols-3"
+                    : "grid-cols-4";
 
             return (
               <ScrollReveal key={cat.category} delay={idx * 0.05} className={span}>
                 <SpotlightCard className="h-full glass border border-border-medium p-4 sm:p-6">
                   <div className="mb-6 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div
-                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-medium bg-bg-tertiary text-text-primary"
-                      >
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-medium bg-bg-tertiary text-text-primary">
                         <Icon className="h-4 w-4" />
                       </div>
                       <h3 className="font-display text-lg font-semibold text-text-primary">
@@ -112,7 +109,13 @@ export default function SkillsSection() {
                     variants={{ show: { transition: { staggerChildren: 0.04 } } }}
                   >
                     {cat.items.map((s) => {
-                      const isDarkLogo = ["Next.js", "Express.js", "Git/GitHub", "Fastify", "Rust"].includes(s.name);
+                      const isDarkLogo = [
+                        "Next.js",
+                        "Express.js",
+                        "Git/GitHub",
+                        "Fastify",
+                        "Rust",
+                      ].includes(s.name);
                       const isRAG = s.name === "RAG";
                       return (
                         <motion.li
@@ -130,13 +133,13 @@ export default function SkillsSection() {
                               </span>
                             </div>
                           ) : (
-                            <Image 
-                              src={getLogoUrl(s.name)} 
-                              alt={s.name} 
+                            <Image
+                              src={getLogoUrl(s.name)}
+                              alt={s.name}
                               width={56}
                               height={56}
-                              style={{ height: 'auto' }}
-                              className={`h-12 w-12 sm:h-14 sm:w-14 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${isDarkLogo ? 'invert opacity-90' : ''}`} 
+                              style={{ height: "auto" }}
+                              className={`h-12 w-12 sm:h-14 sm:w-14 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${isDarkLogo ? "invert opacity-90" : ""}`}
                             />
                           )}
                           <span className="text-xs sm:text-sm text-center leading-tight transition-colors group-hover:text-text-primary text-text-primary font-medium">
@@ -150,7 +153,6 @@ export default function SkillsSection() {
               </ScrollReveal>
             );
           })}
-
         </div>
       </div>
     </section>

@@ -8,7 +8,17 @@ export const stats: Stat[] = [
 ];
 
 export const achievements: Achievement[] = [
-  { label: "Startup Pitch Winner", issuer: "Vikshit Bharat Abhiyan (JUT)", date: "2024", icon: "Trophy" },
+  {
+    label: "Startup Pitch Winner",
+    issuer: "Vikshit Bharat Abhiyan (JUT)",
+    date: "2024",
+    icon: "Trophy",
+  },
   { label: "Google IT Automation with Python", issuer: "Google", date: "2023", icon: "Award" },
-  { label: "B.Tech in Computer Science", issuer: "Dumka Engineering College", date: "2021-2025", icon: "GraduationCap" },
+  {
+    label: "B.Tech in Computer Science",
+    issuer: "Dumka Engineering College",
+    date: "2021-2025",
+    icon: "GraduationCap",
+  },
 ];

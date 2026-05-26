@@ -2,10 +2,7 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
-const Canvas = dynamic(
-  () => import("@react-three/fiber").then((m) => m.Canvas),
-  { ssr: false }
-);
+const Canvas = dynamic(() => import("@react-three/fiber").then((m) => m.Canvas), { ssr: false });
 
 const ParticleField = dynamic(() => import("./ParticleField"), {
   ssr: false,

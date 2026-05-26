@@ -26,13 +26,13 @@ export default {
         const ip = request.headers.get("cf-connecting-ip") || "anonymous";
         const viewKey = `viewed:${slug}:${ip}`;
         const hasViewed = await env.BLOG_VIEWS.get(viewKey);
-        
+
         if (!hasViewed) {
           const current = (await env.BLOG_VIEWS.get(slug)) || 0;
           const newValue = parseInt(current) + 1;
           await env.BLOG_VIEWS.put(slug, newValue.toString());
           await env.BLOG_VIEWS.put(viewKey, "true", { expirationTtl: 86400 });
-          
+
           return new Response(JSON.stringify({ slug, views: newValue, new: true }), {
             headers: { ...corsHeaders, "Content-Type": "application/json" },
           });

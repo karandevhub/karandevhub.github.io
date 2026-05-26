@@ -9,9 +9,7 @@ export default function Footer() {
           <div className="font-display text-2xl font-semibold text-text-primary">
             {IDENTITY.name}
           </div>
-          <p className="mt-2 max-w-xs text-sm text-text-secondary">
-            {IDENTITY.bio}
-          </p>
+          <p className="mt-2 max-w-xs text-sm text-text-secondary">{IDENTITY.bio}</p>
         </div>
         <div className="grid grid-cols-2 gap-10 md:contents">
           <div>
@@ -48,7 +46,9 @@ export default function Footer() {
       </div>
       <div className="border-t border-border-subtle">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 font-mono text-xs text-text-muted md:flex-row lg:px-10">
-          <span>© {new Date().getFullYear()} {IDENTITY.name} — All rights reserved.</span>
+          <span>
+            © {new Date().getFullYear()} {IDENTITY.name} — All rights reserved.
+          </span>
           <span>Crafted in the dark, with care.</span>
         </div>
       </div>

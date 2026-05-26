@@ -1,12 +1,18 @@
-import { Github, Linkedin, Twitter, Sparkles, Wrench, Compass, Instagram, Mail } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Sparkles,
+  Wrench,
+  Compass,
+  Instagram,
+  Mail,
+} from "lucide-react";
 
 export const IDENTITY = {
   name: "Karan Kumar",
   title: "Full Stack & AI Engineer",
-  roles: [
-    "Full Stack Developer",
-    "AI & ML Enthusiast",
-  ],
+  roles: ["Full Stack Developer", "AI & ML Enthusiast"],
   bio: "I build scalable, high-performance applications and intelligent systems using modern frameworks and AI-powered technologies. Bridging the gap between complex logic and seamless user experiences.",
   available: true,
   location: "Jharkhand, India 🇮🇳",
@@ -64,8 +70,10 @@ export const ABOUT = {
 
 export const SEO = {
   title: "Karan Kumar | Full Stack & AI Engineer",
-  description: "Portfolio of Karan Kumar — building intelligent systems and immersive interfaces that bridge the gap between AI and reality. Specializing in React, Node.js, Python, and AI/ML.",
-  keywords: "Karan Kumar, Full Stack Developer, AI Engineer, ML Engineer, Software Architect, React Developer, Node.js, Python, LangChain, Next.js, TanStack, Portfolio, Web Developer India, AI Developer, karandevhub",
+  description:
+    "Portfolio of Karan Kumar — building intelligent systems and immersive interfaces that bridge the gap between AI and reality. Specializing in React, Node.js, Python, and AI/ML.",
+  keywords:
+    "Karan Kumar, Full Stack Developer, AI Engineer, ML Engineer, Software Architect, React Developer, Node.js, Python, LangChain, Next.js, TanStack, Portfolio, Web Developer India, AI Developer, karandevhub",
   author: "Karan Kumar",
   url: "https://karandevhub.github.io/",
   twitter: "@KaranKumar37664",

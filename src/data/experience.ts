@@ -13,7 +13,15 @@ export const experience: Experience[] = [
       "Developing autonomous agentic AI systems and full-stack web platforms to automate complex workflows.",
       "Integrating advanced features and real-time capabilities into high-performance mobile applications.",
     ],
-    tech: ["React Native", "MongoDB", "LangChain", "AWS", "REST APIs", "GenKit", "Google Cloud Run"],
+    tech: [
+      "React Native",
+      "MongoDB",
+      "LangChain",
+      "AWS",
+      "REST APIs",
+      "GenKit",
+      "Google Cloud Run",
+    ],
     current: true,
   },
   {

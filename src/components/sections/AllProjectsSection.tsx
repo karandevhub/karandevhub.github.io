@@ -23,7 +23,8 @@ export default function AllProjectsSection({ isPage = true }: AllProjectsSection
             </h1>
           </div>
           <p className="max-w-md text-sm text-text-secondary md:text-base">
-            A comprehensive archive of applications, systems, and digital tools I have designed, built, and optimized.
+            A comprehensive archive of applications, systems, and digital tools I have designed,
+            built, and optimized.
           </p>
         </div>
 
@@ -44,7 +45,6 @@ export default function AllProjectsSection({ isPage = true }: AllProjectsSection
               className="flex h-full"
             >
               <div className="group relative flex flex-col w-full overflow-hidden rounded-2xl border border-border-medium bg-bg-secondary transition-all duration-300 hover:-translate-y-1 hover:border-accent">
-                
                 {/* Cover Image */}
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <div
@@ -56,7 +56,7 @@ export default function AllProjectsSection({ isPage = true }: AllProjectsSection
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-transparent" />
-                  
+
                   {/* Category / First tag Badge */}
                   {p.tags && p.tags[0] && (
                     <span
@@ -140,7 +140,6 @@ export default function AllProjectsSection({ isPage = true }: AllProjectsSection
                       )}
                     </div>
                   </div>
-
                 </div>
               </div>
             </motion.div>

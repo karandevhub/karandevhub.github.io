@@ -58,7 +58,7 @@ export default function TestimonialsSection() {
                   alt={t.name}
                   width={48}
                   height={48}
-                  style={{ height: 'auto' }}
+                  style={{ height: "auto" }}
                   className="h-12 w-12 rounded-full border border-border-medium object-cover"
                 />
                 <div>
@@ -83,8 +83,7 @@ export default function TestimonialsSection() {
               className="h-1.5 rounded-full transition-all"
               style={{
                 width: i === idx ? 28 : 8,
-                background:
-                  i === idx ? "var(--accent)" : "var(--border-strong)",
+                background: i === idx ? "var(--accent)" : "var(--border-strong)",
               }}
             />
           ))}

@@ -37,7 +37,7 @@ export default function Navbar() {
         "fixed inset-x-0 top-0 z-50 px-6 transition-all duration-500 lg:px-10",
         scrolled
           ? "border-b border-border-subtle bg-bg-primary/70 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+          : "border-b border-transparent bg-transparent",
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between">
@@ -59,7 +59,7 @@ export default function Navbar() {
                     href={href}
                     className={cn(
                       "rounded-md px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors hover:text-text-primary",
-                      isActive ? "text-accent" : "text-text-secondary"
+                      isActive ? "text-accent" : "text-text-secondary",
                     )}
                   >
                     {l.label}
@@ -78,7 +78,11 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <Button asChild variant="outline" className="h-9 rounded-full border-border-medium bg-bg-secondary/60 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-primary transition-all hover:border-accent hover:bg-accent-glow">
+          <Button
+            asChild
+            variant="outline"
+            className="h-9 rounded-full border-border-medium bg-bg-secondary/60 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-text-primary transition-all hover:border-accent hover:bg-accent-glow"
+          >
             {pathname !== "/" ? (
               <Link href="/#contact">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot mr-2" />
@@ -91,7 +95,7 @@ export default function Navbar() {
               </a>
             )}
           </Button>
-          
+
           <Button
             variant="outline"
             size="icon"
@@ -115,9 +119,7 @@ export default function Navbar() {
             className="fixed inset-0 z-[100] h-screen w-full bg-bg-primary/95 backdrop-blur-2xl md:hidden"
           >
             <div className="flex h-16 items-center justify-between px-6">
-              <span className="font-logo text-3xl text-text-primary">
-                Karan Kumar
-              </span>
+              <span className="font-logo text-3xl text-text-primary">Karan Kumar</span>
               <Button
                 variant="outline"
                 size="icon"
@@ -148,7 +150,7 @@ export default function Navbar() {
                           onClick={() => setMobileMenuOpen(false)}
                           className={cn(
                             "block font-display text-5xl font-semibold transition-colors hover:text-accent active:text-accent",
-                            isActive ? "text-accent" : "text-text-primary"
+                            isActive ? "text-accent" : "text-text-primary",
                           )}
                         >
                           {l.label}
