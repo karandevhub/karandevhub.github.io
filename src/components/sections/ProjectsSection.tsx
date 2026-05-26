@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { projects } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,10 +10,7 @@ import { cn } from "@/lib/utils";
 
 export default function ProjectsSection() {
   return (
-    <section
-      id="work"
-      className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20"
-    >
+    <section id="work" className="relative w-full bg-bg-primary px-6 py-12 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
@@ -151,13 +149,13 @@ export default function ProjectsSection() {
         </div>
 
         <div className="mt-24 flex justify-center">
-          <a
-            href="#"
+          <Link
+            href="/projects"
             className="group inline-flex items-center gap-3 rounded-full border border-border-strong px-6 py-3 text-sm font-medium text-text-primary transition-colors hover:border-accent hover:bg-accent-glow"
           >
             View all projects
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
