@@ -106,7 +106,7 @@ export default function HeroSection() {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute left-0 whitespace-nowrap text-text-primary"
               >
-                I am a <span style={{ color: "var(--accent)" }}>{IDENTITY.roles[roleIdx]}</span>
+                I <span style={{ color: "var(--accent)" }}>{IDENTITY.roles[roleIdx]}</span>
               </motion.span>
             </AnimatePresence>
           </span>

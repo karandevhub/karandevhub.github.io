@@ -12,10 +12,10 @@ import {
 export const IDENTITY = {
   name: "Karan Kumar",
   title: "Full Stack & AI Engineer",
-  roles: ["Full Stack Developer", "AI & ML Specialist", "Mobile App Developer"],
+  roles: ["build AI-powered systems", "turn ideas into production code", "make mobile apps feel fast"],
   bio: "I build scalable, high-performance applications and intelligent systems using modern frameworks and AI-powered technologies. Bridging the gap between complex logic and seamless user experiences.",
   available: true,
-  location: "Jharkhand, India 🇮🇳",
+  location: "Noida, India 🇮🇳",
   currentWork: "Application Developer @ Lawazia Tech Pvt. Ltd.",
 };
 
@@ -45,9 +45,9 @@ export const NAVIGATION = {
 
 export const ABOUT = {
   paragraphs: [
-    "I'm a Computer Science student at Dumka Engineering College specializing in Full-Stack Web and Mobile Development.",
-    "Experienced in building scalable, high-performance applications using modern frameworks and AI-powered technologies like LangChain and GenKit to deliver seamless, production-ready user experiences across platforms.",
-    "My work spans from building RAG-based LLM systems to high-performance geospatial dashboards and cross-platform mobile apps.",
+    "Full Stack & AI engineer from Noida, India. I spend most of my time building agentic AI systems, wiring up LLM pipelines, and making mobile apps feel fast.",
+    "I've shipped real-time platforms, RAG-based AI systems, and cross-platform apps — the kind of work where if something breaks, someone actually notices.",
+    "Currently obsessed with AI agents and what happens when you give LLMs the ability to do things, not just say things.",
   ],
   values: [
     {
@@ -71,9 +71,9 @@ export const ABOUT = {
 export const SEO = {
   title: "Karan Kumar | Full Stack & AI Engineer",
   description:
-    "Portfolio of Karan Kumar — building intelligent systems and immersive interfaces that bridge the gap between AI and reality. Specializing in React, Node.js, Python, and AI/ML.",
+    "Full Stack & AI Engineer from India. I build agentic AI systems, LLM pipelines, and high-performance mobile apps — production systems with real users and real consequences.",
   keywords:
-    "Karan Kumar, Full Stack Developer, AI Engineer, ML Engineer, Software Architect, React Developer, Node.js, Python, LangChain, Next.js, TanStack, Portfolio, Web Developer India, AI Developer, karandevhub",
+    "Karan Kumar, Full Stack Developer, AI Engineer, Agentic AI, LLM Engineer, RAG Systems, AI Agents, React Developer, Node.js, TypeScript, LangChain, GenKit, Next.js, React Native, TanStack, MongoDB, Rust, Docker, AWS, Portfolio, Web Developer India, karandevhub",
   author: "Karan Kumar",
   url: "https://karandevhub.github.io/",
   twitter: "@KaranKumar37664",
