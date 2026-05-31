@@ -33,9 +33,7 @@ export default function AboutSection() {
         <div>
           <SectionLabel className="mb-6">About me</SectionLabel>
           <h2 className="text-display font-display font-semibold text-text-primary">
-            A decade obsessed with the
-            <span style={{ color: "var(--accent)" }}> seam </span>
-            between design and code.
+            Obsessed with the space where <span style={{ color: "var(--accent)" }}>AI</span> ends and the <span style={{ color: "var(--accent)" }}>user</span> begins.
           </h2>
           <motion.div
             className="mt-8 space-y-5 text-base leading-relaxed text-text-secondary md:text-lg"
