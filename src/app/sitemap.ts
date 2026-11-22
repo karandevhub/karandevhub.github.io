@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 import { SEO } from "@/constants";
+import { privacyPath, projects } from "@/data/projects";
 
 const URL = SEO.url.replace(/\/$/, "");
 
@@ -23,5 +24,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === "" ? 1 : 0.9,
   }));
 
-  return [...routes, ...blogPosts];
+  const privacyPages = projects
+    .filter((p) => p.privacy)
+    .map((p) => ({
+      url: `${URL}${privacyPath(p.slug)}`,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    }));
+
+  return [...routes, ...privacyPages, ...blogPosts];
 }

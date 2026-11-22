@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import { SEO } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Projects | Karan Kumar",
+  title: "Apps | Karan Kumar",
   description:
-    "Things I've shipped. A detailed archive of applications, systems, and digital tools.",
+    "Mobile apps and games I have designed, built and published.",
   alternates: {
     canonical: `${SEO.url.replace(/\/$/, "")}/projects`,
   },
