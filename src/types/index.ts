@@ -1,3 +1,24 @@
+export type AppStatus = "live" | "coming-soon";
+
+export interface AppLinks {
+  playStore?: string;
+  appStore?: string;
+  website?: string;
+  privacy?: string;
+}
+
+export interface PolicySection {
+  heading: string;
+  body: string;
+}
+
+export interface PrivacyPolicy {
+  lastUpdated: string;
+  summary: string;
+  storedOnDevice: string;
+  extraSections?: PolicySection[];
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -5,11 +26,12 @@ export interface Project {
   description: string;
   tags: string[];
   tech: string[];
-  liveUrl: string;
-  githubUrl: string;
-  coverImage: string;
+  icon: string;
+  accent: string;
+  status: AppStatus;
+  links: AppLinks;
+  privacy?: PrivacyPolicy;
   featured: boolean;
-  metrics?: { label: string; value: string; delta?: string }[];
 }
 
 export interface Experience {

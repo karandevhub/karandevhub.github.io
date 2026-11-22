@@ -1,61 +1,79 @@
 import type { Project } from "@/types";
 
+export const APP_SUPPORT_EMAIL = "kids.cocoloops@gmail.com";
+
 export const projects: Project[] = [
   {
-    slug: "lumen-analytics",
-    title: "Lumen Analytics",
-    tagline: "Realtime product analytics, rebuilt from scratch.",
+    slug: "cocoloops",
+    title: "Cocoloops",
+    tagline: "Audiobooks made for kids.",
     description:
-      "A privacy-first analytics platform handling 4B events/month. Re-architected the ingestion pipeline and shipped a sub-200ms query layer used by 12k teams.",
-    tags: ["SaaS", "Realtime"],
-    tech: ["Next.js", "Rust", "ClickHouse", "Redis", "Kubernetes"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    coverImage:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+      "A kid-friendly audiobook library where children and parents can browse and listen to stories, build playlists and enjoy screen-free listening time.",
+    tags: ["Kids", "Audiobooks"],
+    tech: ["React Native", "TypeScript", "Next.js", "MongoDB", "Firebase"],
+    icon: "/apps/cocoloops.png",
+    accent: "#8b5cf6",
+    status: "live",
+    links: {
+      playStore: "https://play.google.com/store/apps/details?id=com.cocoloops.app",
+      website: "https://cocoloops.com",
+      privacy: "https://cocoloops.com/privacy",
+    },
     featured: true,
-    metrics: [
-      { label: "P95 latency", value: "184ms", delta: "-72%" },
-      { label: "Events/mo", value: "4.1B", delta: "+310%" },
-      { label: "Active teams", value: "12k", delta: "+8x" },
-    ],
   },
   {
-    slug: "atlas-design-system",
-    title: "Atlas Design System",
-    tagline: "A 380-component design system shipped across 9 products.",
+    slug: "magnet-tiles",
+    title: "Magnet Tiles",
+    tagline: "A logic puzzle game about magnetic poles.",
     description:
-      "Led the unification of nine product surfaces into a single themable design system. Cut design-to-prod time by 4x and lifted Lighthouse a11y to 100 across the board.",
-    tags: ["Design Systems", "DX"],
-    tech: ["React", "Radix", "Tailwind", "Storybook", "Figma API"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    coverImage:
-      "https://images.unsplash.com/photo-1561070791-2526d30994b8?auto=format&fit=crop&w=1600&q=80",
+      "Slide magnetic tiles across the board, let opposite poles snap together and solve over a hundred hand-checked puzzles with sticky cells, pinned tiles and a new daily challenge.",
+    tags: ["Game", "Puzzle"],
+    tech: ["React Native", "TypeScript", "Reanimated", "Zustand"],
+    icon: "/apps/magnet-tiles.png",
+    accent: "#3d8bff",
+    status: "coming-soon",
+    links: {},
+    privacy: {
+      lastUpdated: "22 November 2026",
+      summary: "Magnet Tiles is a puzzle game.",
+      storedOnDevice:
+        "Your game progress, stars, coins, purchased items and settings (such as sound and haptics) are saved only on your device so you can continue where you left off.",
+    },
     featured: true,
-    metrics: [
-      { label: "Components", value: "380+" },
-      { label: "Adoption", value: "9 apps" },
-      { label: "A11y score", value: "100" },
-    ],
   },
   {
-    slug: "northwind-commerce",
-    title: "Northwind Commerce",
-    tagline: "An edge-rendered storefront pushing $40M GMV/yr.",
+    slug: "mind-lab",
+    title: "Mind Lab",
+    tagline: "Brain training for memory, focus and speed.",
     description:
-      "Migrated a legacy Magento storefront to a fully edge-rendered React stack. TTFB dropped from 1.4s to 90ms and conversion lifted 23% on mobile.",
-    tags: ["E-commerce", "Performance"],
-    tech: ["TanStack Start", "Cloudflare", "Stripe", "Algolia"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    coverImage:
-      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80",
+      "Short, science-based exercises for memory, focus, speed and reasoning, with regular checkups and insights that show how you improve over time.",
+    tags: ["Brain training", "Health"],
+    tech: ["React Native", "TypeScript", "Notifee", "Zustand"],
+    icon: "/apps/mind-lab.png",
+    accent: "#f5a33b",
+    status: "coming-soon",
+    links: {},
+    privacy: {
+      lastUpdated: "22 November 2026",
+      summary: "Mind Lab is a brain training app.",
+      storedOnDevice:
+        "Your exercise results, checkup scores, training progress, habits and settings are saved only on your device so you can track your progress over time.",
+      extraSections: [
+        {
+          heading: "Notifications",
+          body: "If you allow notifications, Mind Lab schedules training reminders directly on your device. Reminders are created and delivered locally; no information is sent to us or any server to do this. You can turn notifications off at any time in the app or in your device settings.",
+        },
+        {
+          heading: "Not medical advice",
+          body: "Mind Lab is designed for general training and enjoyment. Its results are not a medical assessment and should not be used to diagnose or treat any condition.",
+        },
+      ],
+    },
     featured: true,
-    metrics: [
-      { label: "TTFB", value: "90ms", delta: "-93%" },
-      { label: "Mobile CR", value: "+23%" },
-      { label: "GMV/yr", value: "$40M" },
-    ],
   },
 ];
+
+export const privacyPath = (slug: string) => `/apps/${slug}/privacy`;
+
+export const privacyUrlOf = (project: Project) =>
+  project.links.privacy ?? (project.privacy ? privacyPath(project.slug) : undefined);
