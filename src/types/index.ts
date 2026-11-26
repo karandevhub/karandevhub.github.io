@@ -19,6 +19,43 @@ export interface PrivacyPolicy {
   extraSections?: PolicySection[];
 }
 
+export type FeatureIcon =
+  | "magnet"
+  | "star"
+  | "calendar"
+  | "lightbulb"
+  | "palette"
+  | "trophy"
+  | "gauge"
+  | "shuffle"
+  | "chart"
+  | "check"
+  | "activity"
+  | "bell"
+  | "languages"
+  | "moon"
+  | "heart"
+  | "badge"
+  | "cat"
+  | "users";
+
+export interface AppFeature {
+  icon: FeatureIcon;
+  title: string;
+  body: string;
+}
+
+export interface AppLanding {
+  headline: string;
+  intro: string;
+  stats: { value: string; label: string }[];
+  about: { title: string; paragraphs: string[]; list?: { title: string; items: string[] } };
+  features: AppFeature[];
+  steps: { title: string; body: string }[];
+  screenshots: string[];
+  trust: string[];
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -31,6 +68,7 @@ export interface Project {
   status: AppStatus;
   links: AppLinks;
   privacy?: PrivacyPolicy;
+  landing: AppLanding;
   featured: boolean;
 }
 

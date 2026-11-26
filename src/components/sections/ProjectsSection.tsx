@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { projects } from "@/data/projects";
+import { appPath, projects } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -51,7 +51,9 @@ export default function ProjectsSection() {
                   >
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <AppCover project={p} className="aspect-[16/11]" />
+                  <Link href={appPath(p.slug)} aria-label={`Explore ${p.title}`} className="block">
+                    <AppCover project={p} className="aspect-[16/11]" />
+                  </Link>
                 </div>
 
                 <div>
@@ -66,7 +68,11 @@ export default function ProjectsSection() {
                       </Badge>
                     ))}
                   </div>
-                  <h3 className="text-h1 font-display font-semibold text-text-primary">{p.title}</h3>
+                  <h3 className="text-h1 font-display font-semibold text-text-primary">
+                    <Link href={appPath(p.slug)} className="transition-colors hover:text-accent">
+                      {p.title}
+                    </Link>
+                  </h3>
                   <p className="mt-2 font-display text-lg text-text-secondary">{p.tagline}</p>
                   <p className="mt-4 max-w-xl text-sm leading-relaxed text-text-secondary md:text-base">
                     {p.description}
@@ -85,6 +91,16 @@ export default function ProjectsSection() {
                   </div>
 
                   <div className="mt-8 flex flex-wrap items-center gap-4">
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="rounded-full px-5 py-5 text-sm transition-colors hover:border-accent hover:bg-accent-glow hover:text-text-primary"
+                    >
+                      <Link href={appPath(p.slug)}>
+                        Explore app
+                        <ArrowUpRight className="ml-2 h-3.5 w-3.5" />
+                      </Link>
+                    </Button>
                     {appLinksOf(p).map((link) =>
                       link.primary ? (
                         <Button

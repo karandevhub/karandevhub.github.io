@@ -5,7 +5,8 @@ import { ArrowUpRight } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import AppCover from "@/components/apps/AppCover";
 import { appLinksOf } from "@/components/apps/appLinks";
-import { projects } from "@/data/projects";
+import Link from "next/link";
+import { appPath, projects } from "@/data/projects";
 
 export default function AllProjectsSection() {
   return (
@@ -36,15 +37,17 @@ export default function AllProjectsSection() {
               className="flex h-full"
             >
               <div className="group relative flex w-full flex-col overflow-hidden rounded-2xl border border-border-medium bg-bg-secondary transition-all duration-300 hover:-translate-y-1 hover:border-accent">
-                <AppCover
-                  project={p}
-                  className="aspect-[16/10] rounded-none border-0"
-                  iconClassName="h-20 w-20 lg:h-24 lg:w-24"
-                />
+                <Link href={appPath(p.slug)} aria-label={`Explore ${p.title}`} className="block">
+                  <AppCover
+                    project={p}
+                    className="aspect-[16/10] rounded-none border-0"
+                    iconClassName="h-20 w-20 lg:h-24 lg:w-24"
+                  />
+                </Link>
 
                 <div className="flex flex-grow flex-col p-6">
                   <h3 className="font-display text-xl font-semibold leading-tight text-text-primary transition-colors duration-200 group-hover:text-accent">
-                    {p.title}
+                    <Link href={appPath(p.slug)}>{p.title}</Link>
                   </h3>
                   <p className="mt-1.5 font-mono text-[10px] uppercase tracking-wide text-text-muted">
                     {p.tagline}
@@ -65,6 +68,13 @@ export default function AllProjectsSection() {
                   </div>
 
                   <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-border-subtle pt-4">
+                    <Link
+                      href={appPath(p.slug)}
+                      className="inline-flex items-center gap-1 rounded-full border border-accent bg-accent-glow px-3 py-1.5 font-mono text-[9px] font-semibold uppercase tracking-widest text-text-primary transition-colors hover:text-accent"
+                    >
+                      Explore
+                      <ArrowUpRight className="h-3 w-3" />
+                    </Link>
                     {appLinksOf(p).map((link) => (
                       <a
                         key={link.label}
